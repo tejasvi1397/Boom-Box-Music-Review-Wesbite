@@ -9,11 +9,10 @@ let SongSchema = new Schema({
     Year: {type: Number},
     Comment: {type: String,  max: 30},
     Genre: {type: Number,  max: 255},
-    Album: {type: String,  max: 30},
     Submitted_By: {type: String,  max: 50},
     Submitted_On: {type: Date},
     Number_Of_Ratings: {type: Number},
-    Average_Ratings: {type: Number, max: 5},
+    Average_Ratings: {type: Number, max: 5}
 });
 
 var  Song = mongoose.model('Song' , SongSchema)
