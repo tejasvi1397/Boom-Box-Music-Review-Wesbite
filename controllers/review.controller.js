@@ -15,3 +15,26 @@ exports.review_songID = function (req, res, next) {
     })
 };
 
+exports.review_create = function(req, res, next) {
+    var review = new review_model(
+        {
+            _id: new mongoose.Types.ObjectId(),
+            Song: req.params.id,
+            Ratings: [
+                {
+                    Review_Comment: 'Sirra',
+                    Number_Of_Stars: 5,
+                    created: '2019-03-31'
+                }
+            ]
+        }
+    );
+    review.save(function (err , review) {
+        if (err) {
+            return next(err);
+        }
+        res.send(review)
+        // res.send('Review2 Added successfully')
+        console.log('Review Using Song ID Added successfully');
+    });
+}
