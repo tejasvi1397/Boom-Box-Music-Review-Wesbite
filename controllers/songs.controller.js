@@ -1,6 +1,7 @@
 const song_model = require('../models/songs.model');
 const review_model = require('../models/reviews.model');
 const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', true);
 
 //create song and review
 exports.song_create = function (req, res) {
@@ -71,4 +72,14 @@ exports.song_create = function (req, res) {
 
     });
 };
-//
+
+//logic to update record for a given song
+
+exports.song_update = function (req, res, next) {
+    song_model.findOneAndUpdate(req.params.id, {$set: req.body}, function (err, songs) {
+        if (err) return next(err);
+        res.send(songs);
+        console.log('Song udpated.');
+        console.log(songs);
+    });
+};
