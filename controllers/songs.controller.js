@@ -83,3 +83,12 @@ exports.song_update = function (req, res, next) {
         console.log(songs);
     });
 };
+
+//logic to get list of songs
+exports.song_get_open = function (req, res, next) {
+    song_model.find(function (err, songs) {
+        if (err) return next(err);
+        res.send(songs);
+        console.log(songs);
+    })
+};
