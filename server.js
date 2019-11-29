@@ -5,6 +5,8 @@ const song_route_export = require('./routes/songs.route');
 const review_route_exports = require('./routes/reviews.route'); 
 
 const mongoose = require('mongoose');
+mongoose.set('useUnifiedTopology', true); // to avoid deprecation warning
+mongoose.set('useNewUrlParser', true);
 let MongoAtlasURL = 'mongodb+srv://MusicProject:abcd1234@ece9065-project-tejasvi-kctlu.mongodb.net/test?retryWrites=true&w=majority';
 let mongoDB = process.env.MONGODB_URI || MongoAtlasURL;
 mongoose.connect(mongoDB);

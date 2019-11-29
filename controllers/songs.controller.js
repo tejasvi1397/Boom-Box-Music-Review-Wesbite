@@ -2,8 +2,9 @@ const song_model = require('../models/songs.model');
 const review_model = require('../models/reviews.model');
 const mongoose = require('mongoose');
 
+//create song and review
 exports.song_create = function (req, res) {
-    let song = new song_model(
+    var song = new song_model(
         {
             _id: new mongoose.Types.ObjectId(),
             Song_Title: req.body.Song_Title,
@@ -23,9 +24,9 @@ exports.song_create = function (req, res) {
         if (err) {
             throw err;
         }
-        res.send('Song Added successfully')
-
-        let review = new review_model(
+        res.send('Song Added successfully');
+        //add review 1
+        var review1 = new review_model(
             {
                 _id: new mongoose.Types.ObjectId(),
                 Song: song._id,
@@ -39,11 +40,35 @@ exports.song_create = function (req, res) {
             }
         );
     
-        review.save(function (err) {
+        review1.save(function (err) {
             if (err) {
                 throw err;
             }
-            res.send('Review Added successfully')
+            // res.send('Review1 Added successfully');
+            console.log('Review1 Added successfully');
         });
+
+        var review2 = new review_model(
+            {
+                _id: new mongoose.Types.ObjectId(),
+                Song: song._id,
+                Ratings: [
+                    {
+                        Review_Comment: 'ok',
+                        Number_Of_Stars: 3
+                        // created: '2018-03-17'
+                    }
+                ]
+            }
+        );
+        review2.save(function (err) {
+            if (err) {
+                throw err;
+            }
+            // res.send('Review2 Added successfully')
+            console.log('Review2 Added successfully');
+        });
+
     });
 };
+//

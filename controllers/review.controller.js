@@ -3,25 +3,15 @@ const review_model = require('../models/reviews.model');
 const song_controller = require('../controllers/songs.controller');
 const mongoose = require('mongoose');
 
-exports.review_create = function (req,res) {
-    let review = new review_model(
-        {
-            _id: new mongoose.Types.ObjectId(),
-            Song: song_controller._id,
-            Ratings: [
-                {
-                    Review_Comment: 'Very Good',
-                    Number_Of_Stars: 4,
-                    created: '2019-01-13'
-                }
-            ]
-        }
-    );
-
-    review.save(function (err) {
-        if (err) {
-            throw err;
-        }
-        res.send('Review Added successfully')
+exports.review_songID = function (req, res, next) {
+    var exclude_fields = {
+        "_id" : 0,
+        Song: 0 
+    }
+    review_model.find(req.params.Song, exclude_fields, function (err, reviews) {
+        if (err) return next(err);
+        res.send(reviews);
+        console.log(reviews);
     })
 };
+
