@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const song_route_export = require('./routes/songs.route'); 
-const review_route_exports = require('./routes/reviews.route'); 
+const review_route_exports = require('./routes/reviews.route');
+const user_route_exports = require('./routes/users.route'); 
 
 const mongoose = require('mongoose');
 mongoose.set('useUnifiedTopology', true); // to avoid deprecation warning
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use('/api/secure/song' , song_route_export);
 app.use('/api/open/song' , song_route_export);
 app.use('/api/secure/review' , review_route_exports);
-// app.use('/api/open/review' , review_route_exports);
+app.use('/api/secure' , user_route_exports);
 
 let port = 8080;
 
