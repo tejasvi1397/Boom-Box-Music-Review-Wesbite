@@ -89,6 +89,6 @@ exports.song_get_open = function (req, res, next) {
     song_model.find(function (err, songs) {
         if (err) return next(err);
         res.send(songs);
-        console.log(songs);
+        console.log(songs[0]['Song_Title']);
     })
 };
