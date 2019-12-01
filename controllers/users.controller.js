@@ -1,8 +1,15 @@
+require('dotenv/config');
 const user_model = require('../models/users.model');
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', true);
-// const { hash, compare } = require('bcryptjs');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const secret = process.env.JWT_KEY;
+if (typeof secret === 'undefined') { 
+	console.log("Please set secret as environment variable. E.g. JWT_KEY=\"Open Sesame\" node index");
+	process.exit(1);
+}
 
 //logic to create a new user.
 exports.user_create = async(req, res, next) => {
@@ -99,8 +106,12 @@ exports.user_login = async(req, res, next) => {
                         //     console.log(element);
                         // }
                         if(user){
-                            res.send('Login Successful');
+                            // res.send('Login Successful');
                             console.log(`Login Successful ${element}`);
+                            let payload = {username: user}; //make payload
+                            let token = jwt.sign(payload, secret); //make token
+                            res.json(token); //send token
+                            console.log('token: ' + token);
                         }
                         else{
                             res.status(403).send('Invalid Password');

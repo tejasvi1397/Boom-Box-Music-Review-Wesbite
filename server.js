@@ -17,11 +17,11 @@ mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-const secret = process.env.JWT_KEY;
-if (typeof secret === 'undefined') { 
-	console.log("Please set secret as environment variable. E.g. JWT_KEY=\"Open Sesame\" node index");
-	process.exit(1);
-}
+// const secret = process.env.JWT_KEY;
+// if (typeof secret === 'undefined') { 
+// 	console.log("Please set secret as environment variable. E.g. JWT_KEY=\"Open Sesame\" node index");
+// 	process.exit(1);
+// }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
