@@ -18,16 +18,6 @@ exports.user_create = async(req, res, next) => {
     let Password = req.body.Password;
     let user_email = req.body.Email;
     var count = 0;
-    // var user = new user_model(
-    //     {
-    //         _id: new mongoose.Types.ObjectId(),
-    //         Email: req.body.Email,
-    //         Password: req.body.Password
-    //     }
-    // )
-    // const check_user = user_model.find(user => user.Email === Email);
-    // if (check_user) throw new Error('User already exists');
-    // const hashedPassword = await hash(Password, 10);
     console.log(`Creating user ${user_email}`);
     // var user = new user_model()
     // console.log(user_model.find(user_email));
@@ -108,7 +98,7 @@ exports.user_login = async(req, res, next) => {
                         if(user){
                             // res.send('Login Successful');
                             console.log(`Login Successful ${element}`);
-                            let payload = {username: user}; //make payload
+                            let payload = {username: element['Email'] , id: element['_id']}; //make payload
                             let token = jwt.sign(payload, secret); //make token
                             res.json(token); //send token
                             console.log('token: ' + token);

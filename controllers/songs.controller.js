@@ -1,7 +1,10 @@
+require('dotenv/config');
 const song_model = require('../models/songs.model');
 const review_model = require('../models/reviews.model');
+const user_controller = require('../controllers/users.controller');
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', true);
+const jwt = require('jsonwebtoken');
 
 //create song and review
 exports.song_create = function (req, res) {
@@ -76,12 +79,33 @@ exports.song_create = function (req, res) {
 //logic to update record for a given song
 
 exports.song_update = function (req, res, next) {
-    song_model.findOneAndUpdate(req.params.id, {$set: req.body}, function (err, songs) {
-        if (err) return next(err);
-        res.send(songs);
-        console.log('Song udpated.');
-        console.log(songs);
-    });
+    console.log('Data: ' + JSON.stringify(req.body));
+    console.log("Auth: " + req.headers.authorization);
+    console.log(process.env.JWT_KEY);
+    
+    if (typeof req.headers.authorization === 'undefined')
+        return res.status(401).send("Access denied. Missing Auth header.");
+    const token = req.headers.authorization.split(" ");
+    if (! token[0].startsWith("Bearer")) { // Check first element. Must be "Bearer"
+        return res.status(401).send("Access denied. Missing Token.");
+    }
+    console.log(token[1]);
+    try {
+		// Verify the token
+		const payload = jwt.verify(token[1], process.env.JWT_KEY);
+        console.log("JWT: ", JSON.stringify(payload));
+        console.log("JWT Verified!");
+        song_model.findOneAndUpdate(req.params.id, {$set: req.body}, function (err, songs) {
+            if (err) return next(err);
+            res.send(songs);
+            console.log('Song udpated.');
+            console.log(songs);
+        });	  
+      } 
+    catch (ex) {
+		//if invalid token
+		return res.status(401).send("Access denied. Invalid token.");
+	}
 };
 
 //logic to get list of songs

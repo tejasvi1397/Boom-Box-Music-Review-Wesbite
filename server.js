@@ -30,7 +30,7 @@ app.use('/api/open/song' , song_route_export);
 app.use('/api/secure/review' , review_route_exports);
 app.use('/api/secure' , user_route_exports);
 
-let port = 8080;
+let port = process.env.PORT;
 
 app.listen(port, () => {
     console.log('Server is running on port number ' + port);
