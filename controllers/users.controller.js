@@ -70,3 +70,53 @@ catch (err) {
     });
   }
 }
+
+//logic for when user login and if valid then generate a JWT token.
+exports.user_login = async(req, res, next) => {
+    try{
+        console.log(req.body.Password);
+        let user_password = req.body.Password;
+        let user_email = req.body.Email;
+        var count = 0;
+
+        user_model.find(function(err, users)
+        {
+            console.log(user_email);
+            users.forEach(element =>{
+                console.log(element['Email']);
+                if(element['Email'] === user_email){
+                    count = count+1;
+                    console.log("inside if block");
+                    console.log(element['Email']);
+                    console.log(element['Password']);
+                    bcrypt.compare(user_password , element['Password'], function(err , user){
+                        if (err) {
+                            // res.status(403).send('Invalid Password');
+                            return next(err);
+                        }
+                        // if(res){
+                        //     // res.send('Login Successful');
+                        //     console.log(element);
+                        // }
+                        if(user){
+                            res.send('Login Successful');
+                            console.log(`Login Successful ${element}`);
+                        }
+                        else{
+                            res.status(403).send('Invalid Password');
+                        }
+                    })
+                }
+            })
+            console.log(`Count ${count}`);
+            if(count == 0){
+                res.status(400).send(`Username ${req.body.Email} does not exists`);
+            }
+        })
+    }
+    catch (err) {
+        res.send({
+            error: `${err.message}`,
+        });
+    }
+}
