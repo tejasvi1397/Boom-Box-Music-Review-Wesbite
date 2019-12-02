@@ -8,6 +8,6 @@ let UserSchema = new Schema({
     Password: {type: String, required: true}
 });
 
-var User = mongoose.model('User' , UserSchema)
+var User = mongoose.model('User' , UserSchema);
 // Export the model
 module.exports = User;

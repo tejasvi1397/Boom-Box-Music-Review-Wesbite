@@ -121,3 +121,28 @@ exports.user_login = async(req, res, next) => {
         });
     }
 }
+
+//function to verify token
+exports.jwt_verify = function(req, res, next) {
+    console.log('Data: ' + JSON.stringify(req.body));
+    console.log("Auth: " + req.headers.authorization);
+    console.log(process.env.JWT_KEY);
+    
+    if (typeof req.headers.authorization === 'undefined'){
+        return res.status(401).send("Access denied. Missing Auth header.");
+    } 
+    const token = req.headers.authorization.split(" ");
+    if (! token[0].startsWith("Bearer")) { // Check first element. Must be "Bearer"
+        return res.status(401).send("Access denied. Missing Token.");
+    }
+    console.log(token[1]);
+
+    jwt.verify(token[1], process.env.JWT_KEY, (err, user_verified) => {
+        if(err){
+            console.log(err);
+            return res.status(403).send("Access denied. Invalid token.");
+        }
+        req.user_verified = user_verified;
+        next();
+    });
+}
