@@ -142,6 +142,7 @@ exports.jwt_verify = function(req, res, next) {
             console.log(err);
             return res.status(403).send("Access denied. Invalid token.");
         }
+        console.log("JWT Verified!");
         req.user_verified = user_verified;
         next();
     });

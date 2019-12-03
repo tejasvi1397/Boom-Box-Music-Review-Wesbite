@@ -1,0 +1,39 @@
+header {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #092856;
+    padding: 1em 0;
+}
+.navbar a, a.logo {
+    color: white;
+    text-decoration: none;
+}
+a.logo {
+    font-weight: bold;
+    padding: 5px;
+}
+
+nav {
+    float: right;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+}
+.navbar li{
+    padding: 5px;
+}
+h1 {
+    margin-top: 2em;
+}
