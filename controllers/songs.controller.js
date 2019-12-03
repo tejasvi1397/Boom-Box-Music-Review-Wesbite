@@ -7,7 +7,7 @@ mongoose.set('useFindAndModify', true);
 const jwt = require('jsonwebtoken');
 
 //create song and review
-exports.song_create = function (req, res) {
+exports.song_create = function (req, res, next) {
     var song = new song_model(
         {
             _id: new mongoose.Types.ObjectId(),
@@ -26,52 +26,52 @@ exports.song_create = function (req, res) {
 
     song.save(function (err) {
         if (err) {
-            throw err;
+            return next(err);
         }
         res.send('Song Added successfully');
         //add review 1
-        var review1 = new review_model(
-            {
-                _id: new mongoose.Types.ObjectId(),
-                Song: song._id,
-                Ratings: [
-                    {
-                        Review_Comment: 'Very Good',
-                        Number_Of_Stars: 4,
-                        created: '2019-01-13'
-                    }
-                ]
-            }
-        );
+        // var review1 = new review_model(
+        //     {
+        //         _id: new mongoose.Types.ObjectId(),
+        //         Song: song._id,
+        //         Ratings: [
+        //             {
+        //                 Review_Comment: 'Very Good',
+        //                 Number_Of_Stars: 4,
+        //                 created: '2019-01-13'
+        //             }
+        //         ]
+        //     }
+        // );
     
-        review1.save(function (err) {
-            if (err) {
-                throw err;
-            }
-            // res.send('Review1 Added successfully');
-            console.log('Review1 Added successfully');
-        });
+        // review1.save(function (err) {
+        //     if (err) {
+        //         throw err;
+        //     }
+        //     // res.send('Review1 Added successfully');
+        //     console.log('Review1 Added successfully');
+        // });
 
-        var review2 = new review_model(
-            {
-                _id: new mongoose.Types.ObjectId(),
-                Song: song._id,
-                Ratings: [
-                    {
-                        Review_Comment: 'ok',
-                        Number_Of_Stars: 3
-                        // created: '2018-03-17'
-                    }
-                ]
-            }
-        );
-        review2.save(function (err) {
-            if (err) {
-                throw err;
-            }
-            // res.send('Review2 Added successfully')
-            console.log('Review2 Added successfully');
-        });
+        // var review2 = new review_model(
+        //     {
+        //         _id: new mongoose.Types.ObjectId(),
+        //         Song: song._id,
+        //         Ratings: [
+        //             {
+        //                 Review_Comment: 'ok',
+        //                 Number_Of_Stars: 3
+        //                 // created: '2018-03-17'
+        //             }
+        //         ]
+        //     }
+        // );
+        // review2.save(function (err) {
+        //     if (err) {
+        //         throw err;
+        //     }
+        //     // res.send('Review2 Added successfully')
+        //     console.log('Review2 Added successfully');
+        // });
 
     });
 };

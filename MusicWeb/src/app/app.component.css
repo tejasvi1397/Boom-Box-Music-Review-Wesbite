@@ -33,6 +33,7 @@ nav {
 }
 .navbar li{
     padding: 5px;
+    padding-left:10px;
 }
 h1 {
     margin-top: 2em;

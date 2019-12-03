@@ -7,6 +7,7 @@ const review_route_exports = require('./routes/reviews.route');
 const user_route_exports = require('./routes/users.route'); 
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 mongoose.set('useUnifiedTopology', true); // to avoid deprecation warning
 mongoose.set('useNewUrlParser', true);
@@ -25,6 +26,19 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
+        return res.status(200).json({});
+    };
+    next();
+});
+app.use(cors());
+
 app.use('/api/secure/song' , song_route_export);
 app.use('/api/open/song' , song_route_export);
 app.use('/api/secure/review' , review_route_exports);
