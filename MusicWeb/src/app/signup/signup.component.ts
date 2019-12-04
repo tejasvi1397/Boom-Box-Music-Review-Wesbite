@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  signup_user_data: Object;
+  Email: string;
+  Password: string;
 
-  ngOnInit() {
+  constructor(private _http: HttpService) { }
+
+  ngOnInit() {}
+  signup_user(){
+    let user_details = {
+      Email: this.Email,
+      Password: this.Password
+    };
+    this._http.post_signup_user(JSON.stringify(user_details)).subscribe(data => {
+      this.signup_user_data = data
+      console.log(data);
+    })
   }
 
 }
