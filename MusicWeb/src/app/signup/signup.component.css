@@ -78,17 +78,17 @@ button {
   }
   
   .number {
-    background-color: #5fcf80;
+    background-color: #4bc970;
     color: #fff;
     height: 30px;
-    width: 30px;
+    width: 290%;
     display: inline-block;
-    font-size: 0.8em;
+    font-size: 18px;
     margin-right: 4px;
     line-height: 30px;
     text-align: center;
     text-shadow: 0 1px 0 rgba(255,255,255,0.2);
-    border-radius: 100%;
+    /* border-radius: 100%; */
   }
   
   @media screen and (min-width: 480px) {

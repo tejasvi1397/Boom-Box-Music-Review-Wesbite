@@ -1,1 +1,16 @@
-<p>login works!</p>
+<div class="login">
+        <form method="POST">
+      
+        <h1>Login</h1>
+        
+        <fieldset>
+          <legend><span class="number">Enter Login Details</span></legend>
+          <label>Email (Username):</label>
+          <input type="email" [(ngModel)]="Email" id="login_email" placeholder="Email" [ngModelOptions]="{standalone: true}">
+          
+          <label>Password:</label>
+          <input type="password" [(ngModel)]="Password" id="login_password" placeholder="Password" [ngModelOptions]="{standalone: true}">
+        </fieldset>
+        <button routerLink="/" (click)="login()">Login</button>
+      </form>
+  </div>

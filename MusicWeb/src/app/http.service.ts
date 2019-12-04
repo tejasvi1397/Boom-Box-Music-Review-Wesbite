@@ -20,5 +20,13 @@ export class HttpService {
       })
     });
   }
+
+  post_login_user(user_details): Observable<object>{
+    return this.http.post('http://localhost:8080/api/secure/login', user_details, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
   
 }
