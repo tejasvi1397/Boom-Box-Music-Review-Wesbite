@@ -1,0 +1,27 @@
+
+.login-success-container div {
+    /* list-style-type: none; */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+button {
+    background: rgb(238, 238, 238);
+    padding: 1em;
+    margin-right: 10px;
+    width: 9%;
+    height: 40px;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+/* p {
+    margin: 0;
+} */
+/* p.Song {
+    font-weight: bold;
+    font-size: 1.2rem;
+} */

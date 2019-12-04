@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   Email: string;
   Password: string;
 
-  constructor(private _http: HttpService) { }
+  constructor(private _http: HttpService, private _router: Router) { }
 
   ngOnInit() {
   }
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
       this.login_user_data = data
       localStorage.setItem('token', this.login_user_data['token'])
       console.log(this.login_user_data['token'])
+      this._router.navigate(['/login_success'])
     },
     err => console.log(err)
     )

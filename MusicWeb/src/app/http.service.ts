@@ -28,5 +28,13 @@ export class HttpService {
       })
     });
   }
+
+  guard_loggedIn() {
+    return !!localStorage.getItem('token'); //will return either true or false
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
   
 }
