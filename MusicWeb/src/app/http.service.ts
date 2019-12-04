@@ -37,4 +37,11 @@ export class HttpService {
     return localStorage.getItem('token');
   }
   
+  post_song_add(song_details): Observable<object>{
+    return this.http.post('http://localhost:8080/api/secure/song/create', song_details, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 }
