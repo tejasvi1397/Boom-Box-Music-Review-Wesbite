@@ -10,11 +10,15 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   get_all_songs(){
-    return this.http.get('http://localhost:8080/api/open/song')
+    return this.http.get('http://localhost:8080/api/song/open')
   }
 
   get_trending_songs() {
-    return this.http.get('http://localhost:8080/api/open/song')
+    return this.http.get('http://localhost:8080/api/song/open')
+  }
+
+  get_reviews_open(id){
+    return this.http.get(`http://localhost:8080/api/review/open/${id}`);
   }
 
   post_signup_user(user_details): Observable<object>{
@@ -43,7 +47,7 @@ export class HttpService {
   }
   
   post_song_add(song_details): Observable<object>{
-    return this.http.post('http://localhost:8080/api/secure/song/create', song_details, {
+    return this.http.post('http://localhost:8080/api/song/secure/create', song_details, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -51,7 +55,7 @@ export class HttpService {
   }
 
   put_song_update(song_details, id): Observable<object>{
-    return this.http.put(`http://localhost:8080/api/secure/song/update/${id}`, song_details, {
+    return this.http.put(`http://localhost:8080/api/song/secure/update/${id}`, song_details, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -59,7 +63,7 @@ export class HttpService {
   }
 
   put_review_add(review_details, id): Observable<object>{
-    return this.http.put(`http://localhost:8080/api/secure/review/create/${id}`, review_details, {
+    return this.http.put(`http://localhost:8080/api/review/secure/create/${id}`, review_details, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })

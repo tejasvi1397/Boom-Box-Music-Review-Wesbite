@@ -16,11 +16,11 @@ exports.song_create = function (req, res, next) {
             Album: req.body.Album,
             Year: req.body.Year,
             Comment: req.body.Comment,
-            Genre: req.body.Genre,
-            Submitted_By: req.body.Submitted_By,
-            Submitted_On: req.body.Submitted_On,
-            Number_Of_Ratings: req.body.Number_Of_Ratings,
-            Average_Ratings: req.body.Average_Ratings
+            Genre: req.body.Genre
+            // Submitted_By: req.body.Submitted_By,
+            // Submitted_On: req.body.Submitted_On
+            // Number_Of_Ratings: req.body.Number_Of_Ratings,
+            // Average_Ratings: req.body.Average_Ratings
         }
     );
 

@@ -39,9 +39,10 @@ app.use((req, res, next) => {
 });
 app.use(cors());
 
-app.use('/api/secure/song' , song_route_export);
-app.use('/api/open/song' , song_route_export);
-app.use('/api/secure/review' , review_route_exports);
+app.use('/api/song' , song_route_export);
+// app.use('/api/open/song' , song_route_export);
+app.use('/api/review' , review_route_exports);
+// app.use('/api/open/review', review_route_exports);
 app.use('/api/secure' , user_route_exports);
 
 let port = process.env.PORT;

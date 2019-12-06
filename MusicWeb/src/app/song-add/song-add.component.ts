@@ -33,7 +33,7 @@ export class SongAddComponent implements OnInit {
     };
     this._http.post_song_add(JSON.stringify(song_details)).subscribe(data => {
       this.song_data = data
-      alert("New Song Added")
+      alert("New Song Added");
       console.log(this.song_data);
     },
     err => {

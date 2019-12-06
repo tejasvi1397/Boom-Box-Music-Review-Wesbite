@@ -7,6 +7,18 @@
     <p class="Album">Album: {{ song.Album }}</p>
     <p class="Year">Year: {{ song.Year }}</p>
     <p class="Genre">Genre: {{ song.Genre }}</p>
-    <p class="Show_Review"><button (click)="show_review_for_song()">Show Reviews</button></p>
+    <p class="Show_Review"><button (click)="show_review_for_song(song._id)">Show Reviews</button></p>
   </li>
 </ul>
+
+<ng-template [ngIf] ="reviews_of_song_list">
+  <h1>Reviews</h1>
+  <ul>
+      <li *ngFor="let review of reviews_of_song_list">
+          <p class="Song">Comment: {{ review.Review_Comment }} </p>
+      </li>
+    </ul>
+</ng-template>
+
+
+  

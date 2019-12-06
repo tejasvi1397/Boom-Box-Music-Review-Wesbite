@@ -24,5 +24,11 @@ export class TrendingComponent implements OnInit {
       }
     });
   }
+  show_review_for_song(song_id){
+    this._http.get_reviews_open(song_id).subscribe(data => {
+      this.reviews_of_song_list = data;
+      console.log(this.reviews_of_song_list);
+    })
+  }
   
 }
