@@ -8,8 +8,10 @@ let SongSchema = new Schema({
     Album: {type: String,  max: 30},
     Year: {type: Number},
     Comment: {type: String,  max: 30},
-    Genre: {type: Number,  max: 255},
+    Genre: {type: String},
     Submitted_On: {type: Date, default: Date.now},
+    Submitted_By: {type: String},
+    Number_Of_Ratings: {type: Number, default: 0},
     Average_Ratings: {type: Number, max: 5, default: 0},
     Status: {type: String, default: 'visible'}
 });

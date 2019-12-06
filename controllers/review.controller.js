@@ -9,16 +9,16 @@ exports.review_songID = function (req, res, next) {
         Song: 0,
         User: 0 
     }
-    review_model.find({Song: req.params.id}, exclude_fields, function (err, reviews) {
+    review_model.find({Song: req.params.id}, exclude_fields, {sort: {Created: -1}},function (err, reviews) {
         if (err) return next(err);
         res.send(reviews);
         console.log(reviews[0]['User_Name']);
         console.log(`Count ${reviews.length}`)
     })
-    review_model.countDocuments({Song: req.params.id},function(err, count){
-        // if (err) return next(err);
-        console.log(count);
-    })
+    // review_model.countDocuments({Song: req.params.id},function(err, count){
+    //     // if (err) return next(err);
+    //     console.log(count);
+    // })
 };
 
 exports.review_create = function(req, res, next) {
@@ -30,7 +30,7 @@ exports.review_create = function(req, res, next) {
             User: req.user_verified.id,
             User_Name: req.user_verified.username,
             Review_Comment: req.body.Review_Comment,
-            Number_Of_Stars: req.body.Number_Of_Stars
+            Rating: req.body.Rating
         }
     );
     //to update avg rating in song model
@@ -40,12 +40,16 @@ exports.review_create = function(req, res, next) {
         song_model.findOne({_id : req.params.id}, function(err, song, next){
             if (err) return next(err);
             console.log(song['Average_Ratings']);
-            let new_avg_rating = (song['Average_Ratings'] + req.body.Number_Of_Stars)/(count+1);
+            let new_avg_rating = (song['Average_Ratings'] + req.body.Rating)/(count+1);
             console.log(`new avg rating ${new_avg_rating}`);
-            song_model.findOneAndUpdate({_id : req.params.id}, {$set: {Average_Ratings : new_avg_rating}}, function(err, song_updated, next){
+            song_model.findOneAndUpdate({_id : req.params.id}, {$set: {Average_Ratings : new_avg_rating, Number_Of_Ratings : count+1}}, {new: true}, function(err, song_updated, next){
                 if (err) return next(err);
                 console.log(song_updated);
             })
+            // song_model.findOneAndUpdate({_id : req.params.id}, {$set: {Number_Of_Ratings : count}}, {returnOriginal:false}, function(err, song_updated_count, next){
+            //     if (err) return next(err);
+            //     console.log(song_updated_count);
+            // })
         })
     })
     review.save(function (err , review) {

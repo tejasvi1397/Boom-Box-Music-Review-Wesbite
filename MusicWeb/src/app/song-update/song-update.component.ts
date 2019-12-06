@@ -18,7 +18,7 @@ export class SongUpdateComponent implements OnInit {
   Album: string;
   Year: number;
   Comment: string;
-  Genre: number;
+  Genre: string;
 
   constructor(private _http: HttpService, private _router: Router) { }
 

@@ -21,7 +21,7 @@
           <input type="text" [(ngModel)]="Comment" id="song-add-comment" placeholder="Comment" [ngModelOptions]="{standalone: true}">
 
           <label>Genre:</label>
-          <input type="number" [(ngModel)]="Genre" id="song-add-genre" placeholder="Genre" [ngModelOptions]="{standalone: true}">
+          <input type="text" [(ngModel)]="Genre" id="song-add-genre" placeholder="Genre" [ngModelOptions]="{standalone: true}">
         </fieldset>
         <button routerLink="/login_success" (click)="add_song()">Add Song</button>
       </form>

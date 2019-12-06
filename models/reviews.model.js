@@ -8,8 +8,8 @@ let ReviewSchema = new Schema({
     User: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     User_Name: {type: String},
     Review_Comment: {type: String, required: true, max: 100},
-    Number_Of_Stars: {type: Number, max: 5},
-    created :{type: Date, default: Date.now}
+    Rating: {type: Number, max: 5},
+    Created :{type: Date, default: Date.now}
 });
 
 var  Review = mongoose.model('Review' , ReviewSchema)

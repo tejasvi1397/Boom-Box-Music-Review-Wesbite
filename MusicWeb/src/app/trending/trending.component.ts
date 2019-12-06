@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-trending',
@@ -10,6 +11,7 @@ export class TrendingComponent implements OnInit {
 
   trending_songs_list: Object;
   reviews_of_song_list: Object;
+  check_flag: number;
 
   constructor(private _http: HttpService) { }
 
@@ -27,8 +29,12 @@ export class TrendingComponent implements OnInit {
   show_review_for_song(song_id){
     this._http.get_reviews_open(song_id).subscribe(data => {
       this.reviews_of_song_list = data;
+      this.check_flag = 1;
       console.log(this.reviews_of_song_list);
     })
+  }
+  show_all_reviews(){
+    this.check_flag = 2;
   }
   
 }

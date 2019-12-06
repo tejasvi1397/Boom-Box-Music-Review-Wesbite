@@ -16,7 +16,7 @@ export class ReviewAddComponent implements OnInit {
   Song_Title: string;
   Artist: string;
   Review_Comment: string;
-  Number_Of_Stars: number;
+  Rating: number;
 
   constructor(private _http: HttpService, private _router: Router) { }
 
@@ -27,7 +27,7 @@ export class ReviewAddComponent implements OnInit {
       Song_Title: this.Song_Title,
       Artist: this.Artist,
       Review_Comment: this.Review_Comment,
-      Number_Of_Stars: this.Number_Of_Stars
+      Rating: this.Rating
     };
     this._http.get_all_songs().subscribe(data => {
       this.all_songs_list = data;

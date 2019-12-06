@@ -16,6 +16,7 @@ import { SongAddComponent } from './song-add/song-add.component';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { SongUpdateComponent } from './song-update/song-update.component';
 import { ReviewAddComponent } from './review-add/review-add.component';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ReviewAddComponent } from './review-add/review-add.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RatingModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

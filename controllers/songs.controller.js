@@ -16,8 +16,8 @@ exports.song_create = function (req, res, next) {
             Album: req.body.Album,
             Year: req.body.Year,
             Comment: req.body.Comment,
-            Genre: req.body.Genre
-            // Submitted_By: req.body.Submitted_By,
+            Genre: req.body.Genre,
+            Submitted_By: req.user_verified.username
             // Submitted_On: req.body.Submitted_On
             // Number_Of_Ratings: req.body.Number_Of_Ratings,
             // Average_Ratings: req.body.Average_Ratings
@@ -93,6 +93,6 @@ exports.song_get_open = function (req, res, next) {
     song_model.find(function (err, songs) {
         if (err) return next(err);
         res.send(songs);
-        console.log(songs[0]['Song_Title']);
+        // console.log(songs[0]['Song_Title']);
     })
 };

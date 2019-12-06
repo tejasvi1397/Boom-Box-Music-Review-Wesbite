@@ -14,8 +14,8 @@
           <label>Review Comment:</label>
           <input type="text" [(ngModel)]="Review_Comment" id="review-add-Review_Comment" placeholder="Review Comment" [ngModelOptions]="{standalone: true}">
 
-          <label>Number Of Stars:</label>
-          <input type="number" max="5" min="1" [(ngModel)]="Number_Of_Stars" id="review-add-Number_Of_Stars" placeholder="Number Of Stars" [ngModelOptions]="{standalone: true}">
+          <label>Rating:</label>
+          <input type="number" max="5" min="1" [(ngModel)]="Rating" id="review-add-Rating" placeholder="Rating" [ngModelOptions]="{standalone: true}">
 
         </fieldset>
         <button routerLink="/login_success" (click)="add_review()">Add Review</button>

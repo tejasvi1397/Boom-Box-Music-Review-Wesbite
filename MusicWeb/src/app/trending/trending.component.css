@@ -10,7 +10,7 @@ li {
     padding: 1em;
     margin-right: 10px;
     width: 20%;
-    height: 290px;
+    height: 370px;
     margin-bottom: 1em;
     display: flex;
     flex-direction: column;
@@ -21,4 +21,10 @@ li {
 p.Song {
     font-weight: bold;
     font-size: 1.2rem;
+}
+.top-review-li{
+    height: 295px;
+}
+.all-review-li{
+    height: 200px;
 }
