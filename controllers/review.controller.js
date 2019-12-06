@@ -16,17 +16,15 @@ exports.review_songID = function (req, res, next) {
 };
 
 exports.review_create = function(req, res, next) {
+    console.log(req.user_verified.id);
     var review = new review_model(
         {
             _id: new mongoose.Types.ObjectId(),
             Song: req.params.id,
-            Ratings: [
-                {
-                    Review_Comment: 'Ultimate',
-                    Number_Of_Stars: 5,
-                    created: '2019-11-14'
-                }
-            ]
+            User: req.user_verified.id,
+            User_Name: req.user_verified.username,
+            Review_Comment: req.body.Review_Comment,
+            Number_Of_Stars: req.body.Number_Of_Stars
         }
     );
     review.save(function (err , review) {

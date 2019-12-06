@@ -15,8 +15,13 @@ export class TrendingComponent implements OnInit {
   ngOnInit() {
     this._http.get_trending_songs().subscribe(data => {
       this.trending_songs_list = data;
-      console.log(data);
+      console.log(this.trending_songs_list);
+      console.log('testing shuru');
+      for(let i in this.trending_songs_list){
+        console.log(this.trending_songs_list[i]);
+        console.log(this.trending_songs_list[i]['Song_Title']);
+      }
     });
   }
-
+  
 }

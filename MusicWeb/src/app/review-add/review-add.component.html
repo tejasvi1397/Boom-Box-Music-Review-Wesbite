@@ -1,0 +1,23 @@
+<div class="review-add">
+        <form method="POST">
+      
+        <h1>Add Reviews</h1>
+        
+        <fieldset>
+          <legend><span class="number">Enter Review Details</span></legend>
+          <label>Song Title:</label>
+          <input type="text" [(ngModel)]="Song_Title" id="review-add-songtitle" placeholder="Song Title" [ngModelOptions]="{standalone: true}">
+          
+          <label>Artist:</label>
+          <input type="text" [(ngModel)]="Artist" id="review-add-artist" placeholder="Artist" [ngModelOptions]="{standalone: true}">
+
+          <label>Review Comment:</label>
+          <input type="text" [(ngModel)]="Review_Comment" id="review-add-Review_Comment" placeholder="Review Comment" [ngModelOptions]="{standalone: true}">
+
+          <label>Number Of Stars:</label>
+          <input type="number" max="5" min="1" [(ngModel)]="Number_Of_Stars" id="review-add-Number_Of_Stars" placeholder="Number Of Stars" [ngModelOptions]="{standalone: true}">
+
+        </fieldset>
+        <button routerLink="/login_success" (click)="add_review()">Add Review</button>
+      </form>
+  </div>

@@ -20,10 +20,11 @@ export class SignupComponent implements OnInit {
       Email: this.Email,
       Password: this.Password
     };
+    console.log(`test ${this.Email}`)
     this._http.post_signup_user(JSON.stringify(user_details)).subscribe(data => {
       this.signup_user_data = data
       console.log(data);
-    })
+    },
+    err => console.log(err))
   }
-
 }

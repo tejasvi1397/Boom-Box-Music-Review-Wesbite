@@ -14,6 +14,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginSuccessComponent } from './login-success/login-success.component';
 import { SongAddComponent } from './song-add/song-add.component';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { SongUpdateComponent } from './song-update/song-update.component';
+import { ReviewAddComponent } from './review-add/review-add.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { TokenInterceptorService } from './token-interceptor.service';
     SignupComponent,
     TrendingComponent,
     LoginSuccessComponent,
-    SongAddComponent
+    SongAddComponent,
+    SongUpdateComponent,
+    ReviewAddComponent
   ],
   imports: [
     BrowserModule,

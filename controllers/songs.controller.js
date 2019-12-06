@@ -79,7 +79,7 @@ exports.song_create = function (req, res, next) {
 //logic to update record for a given song
 
 exports.song_update = function (req, res, next) {
-    song_model.findOneAndUpdate(req.params.id, {$set: req.body}, function (err, songs) {
+    song_model.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, songs) {
         if (err) return next(err);
         res.send(songs);
         console.log('Song udpated.');
