@@ -57,4 +57,12 @@ export class HttpService {
       })
     });
   }
+
+  put_review_add(review_details, id): Observable<object>{
+    return this.http.put(`http://localhost:8080/api/secure/review/create/${id}`, review_details, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 }

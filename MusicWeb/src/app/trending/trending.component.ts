@@ -9,6 +9,7 @@ import { HttpService } from '../http.service';
 export class TrendingComponent implements OnInit {
 
   trending_songs_list: Object;
+  reviews_of_song_list: Object;
 
   constructor(private _http: HttpService) { }
 

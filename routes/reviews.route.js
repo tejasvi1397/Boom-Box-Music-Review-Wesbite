@@ -9,6 +9,6 @@ const user_controller = require('../controllers/users.controller');
 review_router.get('/:id', user_controller.jwt_verify, review_controller.review_songID);
 
 //route to create a new review for a given song id
-review_router.put('/:id', user_controller.jwt_verify, review_controller.review_create);
+review_router.put('/create/:id', user_controller.jwt_verify, review_controller.review_create);
 
 module.exports = review_router;

@@ -2,10 +2,11 @@
 
 <ul *ngIf="trending_songs_list">
   <li *ngFor="let song of trending_songs_list">
-    <p class="Song">Song: {{ song.Song_Title }}</p>
+    <p class="Song">Song: {{ song.Song_Title }} </p>
     <p class="Artist">Artist: {{ song.Artist }} </p>
     <p class="Album">Album: {{ song.Album }}</p>
     <p class="Year">Year: {{ song.Year }}</p>
     <p class="Genre">Genre: {{ song.Genre }}</p>
+    <p class="Show_Review"><button (click)="show_review_for_song()">Show Reviews</button></p>
   </li>
 </ul>
