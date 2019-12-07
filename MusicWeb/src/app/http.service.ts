@@ -83,4 +83,8 @@ export class HttpService {
       })
     });
   }
+  
+  delete_song(id){
+    return this.http.delete(`http://localhost:8080/api/song/admin/delete/${id}`);
+  }
 }

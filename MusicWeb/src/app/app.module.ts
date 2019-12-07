@@ -18,6 +18,7 @@ import { SongUpdateComponent } from './song-update/song-update.component';
 import { ReviewAddComponent } from './review-add/review-add.component';
 import { RatingModule } from 'ng-starrating';
 import { AdminComponent } from './admin/admin.component';
+import { SongDeleteComponent } from './song-delete/song-delete.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AdminComponent } from './admin/admin.component';
     SongAddComponent,
     SongUpdateComponent,
     ReviewAddComponent,
-    AdminComponent
+    AdminComponent,
+    SongDeleteComponent
   ],
   imports: [
     BrowserModule,
