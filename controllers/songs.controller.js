@@ -120,5 +120,14 @@ exports.song_delete = function(req, res, next) {
     })
 }
 
+//logic to change song status
+exports.song_change_status = function(req, res, next) {
+    song_model.findOneAndUpdate({_id : req.params.id}, {$set: {Status : req.body.Status}}, {new: true}, function(err, song_updated, next){
+        if (err) return next(err);
+        res.send(song_updated);
+        console.log(song_updated);
+    })
+}
+
 
 

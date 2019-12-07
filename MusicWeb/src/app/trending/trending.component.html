@@ -1,16 +1,19 @@
 <h1>Trending Songs</h1>
 
-<ul *ngIf="trending_songs_list">
-  <li *ngFor="let song of trending_songs_list">
-    <p class="Song">Song: {{ song.Song_Title }} </p>
-    <p class="Artist">Artist: {{ song.Artist }} </p>
-    <p class="Album">Album: {{ song.Album }}</p>
-    <p class="Year">Year: {{ song.Year }}</p>
-    <p class="Genre">Genre: {{ song.Genre }}</p>
-    <p class="Avg_Rating">Average Rating: {{ song.Average_Ratings }} <star-rating value="{{ song.Average_Ratings }}" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true" (rate)="onRate($event)"></star-rating></p>
-    <p class="Show_Review"><button (click)="show_review_for_song(song._id)">Show Reviews</button></p>
-  </li>
-</ul>
+
+  <ul *ngIf="trending_songs_list">
+    <li *ngFor="let song of trending_songs_list">
+      <ng-template [ngIf] = "song.Status == 'visible'">
+        <p class="Song">Song: {{ song.Song_Title }} </p>
+        <p class="Artist">Artist: {{ song.Artist }} </p>
+        <p class="Album">Album: {{ song.Album }}</p>
+        <p class="Year">Year: {{ song.Year }}</p>
+        <p class="Genre">Genre: {{ song.Genre }}</p>
+        <p class="Avg_Rating">Average Rating: {{ song.Average_Ratings }} <star-rating value="{{ song.Average_Ratings }}" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true" (rate)="onRate($event)"></star-rating></p>
+        <p class="Show_Review"><button (click)="show_review_for_song(song._id)">Show Reviews</button></p>                   
+    </ng-template>
+    </li>
+  </ul>
 
 <!-- <ng-template [ngIf] ="reviews_of_song_list">
   <h1>Reviews</h1>

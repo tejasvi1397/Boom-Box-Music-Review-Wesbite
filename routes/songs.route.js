@@ -21,4 +21,7 @@ song_router.post('/open/search', song_controller.song_search);
 //route to delete song admin
 song_router.delete('/admin/delete/:id',user_controller.jwt_verify, song_controller.song_delete);
 
+//route to change song status -hidden/visible
+song_router.put('/admin/status/update/:id', user_controller.jwt_verify, song_controller.song_change_status);
+
 module.exports = song_router;
