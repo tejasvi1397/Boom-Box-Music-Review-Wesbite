@@ -28,7 +28,12 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', this.login_user_data['token'])
       // console.log(this.login_user_data['token'])
       // console.log(this.login_user_data['role'])
-      if(this.login_user_data['role'] == "Regular User"){
+      if(this.login_user_data['account_status'] == "Deactivated"){
+        alert("Your account is deactivated. Please contact site manager to activate your account");
+        this._http.logoutUser();
+        // this._router.navigate(['/']);
+      }
+      else if(this.login_user_data['role'] == "Regular User"){
         this._router.navigate(['/login_success'])
       }
       else{
