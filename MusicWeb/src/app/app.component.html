@@ -7,8 +7,9 @@
           <li><a href="#" routerLink = "/">Home</a></li> 
           <li><a href="#" routerLink = "/search">Search</a></li>
           <li><a href="#" routerLink = "/trending">Trending</a></li>
-          <li><a href="#" routerLink = "/login">Login</a></li>
-          <li><a href="#" routerLink = "/signup">Sign Up</a></li>
+          <li><a href="#" *ngIf="!_http.guard_loggedIn()" routerLink = "/login">Login</a></li>
+          <li><a href="#" *ngIf="!_http.guard_loggedIn()" routerLink = "/signup">Sign Up</a></li>
+          <li><a href="#" style="cursor:pointer" *ngIf="_http.guard_loggedIn()" (click)="_http.logoutUser()">Logout</a></li>
         </ul>
       </nav>
     </div>

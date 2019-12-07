@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router'
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _router: Router) { }
 
   get_all_songs(){
     return this.http.get('http://localhost:8080/api/song/open')
@@ -36,6 +37,11 @@ export class HttpService {
         'Content-Type': 'application/json'
       })
     });
+  }
+
+  logoutUser() {
+    localStorage.removeItem('token')
+    this._router.navigate(['/'])
   }
 
   guard_loggedIn() {
