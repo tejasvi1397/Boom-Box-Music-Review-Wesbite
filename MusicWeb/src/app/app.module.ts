@@ -17,6 +17,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
 import { SongUpdateComponent } from './song-update/song-update.component';
 import { ReviewAddComponent } from './review-add/review-add.component';
 import { RatingModule } from 'ng-starrating';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RatingModule } from 'ng-starrating';
     LoginSuccessComponent,
     SongAddComponent,
     SongUpdateComponent,
-    ReviewAddComponent
+    ReviewAddComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

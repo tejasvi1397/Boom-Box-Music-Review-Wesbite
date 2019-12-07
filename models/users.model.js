@@ -6,7 +6,8 @@ let UserSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
     Email: {type: mongoose.SchemaTypes.Email, required: true, unique: true},
     Password: {type: String, required: true},
-    Account_Status: {type: String, default: "Activated"}
+    Account_Status: {type: String, default: "Activated"},
+    Role: {type: String, default: "Regular User"}
 });
 
 var User = mongoose.model('User' , UserSchema);

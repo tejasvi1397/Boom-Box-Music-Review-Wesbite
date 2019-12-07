@@ -17,4 +17,8 @@ song_router.get('/open/', song_controller.song_get_open);
 
 //route to get list of songs based on search criteria
 song_router.post('/open/search', song_controller.song_search);
+
+//route to delete song admin
+song_router.delete('/admin/delete/:id',user_controller.jwt_verify, song_controller.song_delete);
+
 module.exports = song_router;

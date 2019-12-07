@@ -100,8 +100,8 @@ exports.user_login = async(req, res, next) => {
                             console.log(`Login Successful ${element}`);
                             let payload = {username: element['Email'] , id: element['_id'], status: element['Account_Status']}; //make payload
                             let token = jwt.sign(payload, secret); //make token
-                            // res.json(token); //send token
-                            res.status(200).send({token});
+                            res.json({token: token, role: element['Role'], account_status: element['Account_Status']}); //send token
+                            // res.status(200).send({token});
                             console.log('token: ' + token);
                         }
                         else{

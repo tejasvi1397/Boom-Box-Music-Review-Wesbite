@@ -10,6 +10,7 @@ import { LoginSuccessComponent } from './login-success/login-success.component';
 import { SongAddComponent } from './song-add/song-add.component';
 import { SongUpdateComponent } from './song-update/song-update.component';
 import { ReviewAddComponent } from './review-add/review-add.component';
+import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './auth.guard'
 
 
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'login_success', component: LoginSuccessComponent, canActivate: [AuthGuard] },
   { path: 'song_add', component: SongAddComponent },
   { path: 'song_update', component: SongUpdateComponent },
-  { path: 'review_add', component: ReviewAddComponent }
+  { path: 'review_add', component: ReviewAddComponent },
+  { path: 'admin', component: AdminComponent }
 ];
 
 @NgModule({

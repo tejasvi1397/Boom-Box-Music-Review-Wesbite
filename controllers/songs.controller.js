@@ -107,5 +107,18 @@ exports.song_search = function(req, res, next) {
     })
 }
 
+//logic to delete songs
+exports.song_delete = function(req, res, next) {
+    song_model.findByIdAndDelete(req.params.id, function(err, song_deleted) {
+        if (err) return next(err);
+        res.send(song_deleted);
+        console.log(`Song Deleted ${song_deleted}`);
+        review_model.deleteMany({Song: req.params.id}, function(err, review_deleted) {
+            if (err) return next(err);
+            console.log(`Review Deleted ${review_deleted}`); 
+        })
+    })
+}
+
 
 

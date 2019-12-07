@@ -26,8 +26,14 @@ export class LoginComponent implements OnInit {
       this.login_user_data = data
       console.log(this.login_user_data);
       localStorage.setItem('token', this.login_user_data['token'])
-      console.log(this.login_user_data['token'])
-      this._router.navigate(['/login_success'])
+      // console.log(this.login_user_data['token'])
+      // console.log(this.login_user_data['role'])
+      if(this.login_user_data['role'] == "Regular User"){
+        this._router.navigate(['/login_success'])
+      }
+      else{
+        this._router.navigate(['/admin'])
+      }
     },
     err => console.log(err)
     )
