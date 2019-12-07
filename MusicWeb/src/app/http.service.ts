@@ -69,4 +69,12 @@ export class HttpService {
       })
     });
   }
+
+  post_search_songs(search_details){
+    return this.http.post('http://localhost:8080/api/song/open/search', search_details, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 }

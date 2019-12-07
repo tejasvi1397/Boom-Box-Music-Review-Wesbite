@@ -16,6 +16,8 @@ let SongSchema = new Schema({
     Status: {type: String, default: 'visible'}
 });
 
+SongSchema.index({Song_Title: "text", Artist: "text", Album: "text", Year: "text", Genre: "text"});
+
 var  Song = mongoose.model('Song' , SongSchema)
 // Export the model
 module.exports = Song;

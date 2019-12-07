@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     };
     this._http.post_login_user(JSON.stringify(user_details)).subscribe(data => {
       this.login_user_data = data
+      console.log(this.login_user_data);
       localStorage.setItem('token', this.login_user_data['token'])
       console.log(this.login_user_data['token'])
       this._router.navigate(['/login_success'])

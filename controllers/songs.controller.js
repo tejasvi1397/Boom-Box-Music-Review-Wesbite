@@ -96,3 +96,16 @@ exports.song_get_open = function (req, res, next) {
         // console.log(songs[0]['Song_Title']);
     })
 };
+
+//logic to get songs based on search keyword
+exports.song_search = function(req, res, next) {
+    song_model.find({ $text: { $search : req.body.Search } },function (err, songs) {
+        if (err) return next(err);
+        res.send(songs);
+        console.log(songs);
+        // console.log(songs[0]['Song_Title']);
+    })
+}
+
+
+

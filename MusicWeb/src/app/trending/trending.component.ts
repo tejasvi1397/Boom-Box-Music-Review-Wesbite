@@ -36,5 +36,7 @@ export class TrendingComponent implements OnInit {
   show_all_reviews(){
     this.check_flag = 2;
   }
-  
+  hide_reviews(){
+    this.check_flag = 3;
+  }
 }
