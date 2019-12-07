@@ -148,3 +148,12 @@ exports.jwt_verify = function(req, res, next) {
         next();
     });
 }
+
+//logic to modify user 
+exports.user_modify = function(req, res, next) {
+    user_model.findOneAndUpdate({_id : req.params.id}, {$set: req.body}, {new: true}, function(err, user_updated, next) {
+        if (err) return next(err);
+        res.send(user_updated);
+        console.log(user_updated);
+    })
+}
