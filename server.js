@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const song_route_export = require('./routes/songs.route'); 
 const review_route_exports = require('./routes/reviews.route');
-const user_route_exports = require('./routes/users.route'); 
+const user_route_exports = require('./routes/users.route');
+const playlist_route_exports = require('./routes/playlists.route'); 
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
@@ -44,6 +45,7 @@ app.use('/api/song' , song_route_export);
 app.use('/api/review' , review_route_exports);
 // app.use('/api/open/review', review_route_exports);
 app.use('/api' , user_route_exports);
+app.use('/api/playlist', playlist_route_exports)
 
 let port = process.env.PORT;
 

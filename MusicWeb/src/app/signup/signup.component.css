@@ -104,3 +104,10 @@ button {
     text-align: center;
     color: red;
   }
+  .already-registered{
+    text-align: center;
+  }
+  .already-registered a{
+    text-decoration: none;
+    color: white;
+  }
