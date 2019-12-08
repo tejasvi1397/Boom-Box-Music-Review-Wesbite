@@ -13,6 +13,7 @@ import { ReviewAddComponent } from './review-add/review-add.component';
 import { AdminComponent } from './admin/admin.component';
 import { SongDeleteComponent } from './song-delete/song-delete.component';
 import { UserModifyComponent } from './user-modify/user-modify.component';
+import { ModifySongStatusComponent } from './modify-song-status/modify-song-status.component';
 import { AuthGuard } from './auth.guard'
 
 
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'review_add', component: ReviewAddComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'song_delete', component: SongDeleteComponent },
-  { path: 'user_modify', component: UserModifyComponent }
+  { path: 'user_modify', component: UserModifyComponent },
+  { path: 'modify_song_status', component: ModifySongStatusComponent }
 ];
 
 @NgModule({

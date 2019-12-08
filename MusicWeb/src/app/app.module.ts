@@ -20,6 +20,7 @@ import { RatingModule } from 'ng-starrating';
 import { AdminComponent } from './admin/admin.component';
 import { SongDeleteComponent } from './song-delete/song-delete.component';
 import { UserModifyComponent } from './user-modify/user-modify.component';
+import { ModifySongStatusComponent } from './modify-song-status/modify-song-status.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UserModifyComponent } from './user-modify/user-modify.component';
     ReviewAddComponent,
     AdminComponent,
     SongDeleteComponent,
-    UserModifyComponent
+    UserModifyComponent,
+    ModifySongStatusComponent
   ],
   imports: [
     BrowserModule,

@@ -99,4 +99,12 @@ export class HttpService {
       })
     });
   }
+
+  put_modify_song_status(song_details, id): Observable<object>{
+    return this.http.put(`http://localhost:8080/api/song/admin/status/update/${id}`, song_details, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 }
