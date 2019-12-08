@@ -1,1 +1,31 @@
-<p>user-modify works!</p>
+<div class="user-modify">
+        <form method="POST" [formGroup]="form">
+      
+        <h1>Modify User Details</h1>
+        
+        <fieldset>
+          <legend><span class="number">Enter User Details</span></legend>
+          <label>Email (Username):</label>
+          <input type="email" [(ngModel)]="Email" name="Email" formControlName="Email" id="user_modify_email" placeholder="Email">
+          <div class="required-error" *ngIf = "form.get('Email').touched && form.get('Email').invalid">
+              <p *ngIf = "form.get('Email').errors.required">Email is Required</p>
+              <p *ngIf = "form.get('Email').errors.email">Enter a valid email address</p>
+          </div>
+          
+          <label>Role:</label>
+          <select [(ngModel)]="Role" name="Role" id="user_modify_Role" [ngModelOptions]="{standalone: true}">
+            <option value="Regular User">Regular User</option>
+            <option value="Admin">Admin</option>
+          </select>
+          
+
+          <label>Account Status:</label>
+          <select [(ngModel)]="Account_Status" name="Account_Status" id="user_modify_Account_Status" [ngModelOptions]="{standalone: true}">
+                <option value="Activated">Activated</option>
+                <option value="Deactivated">Deactivated</option>
+         </select>
+          
+        </fieldset>
+        <button routerLink="/login_success" (click)="modify_user()">Modify User Details</button>
+      </form>
+  </div>

@@ -11,11 +11,15 @@ export class HttpService {
   constructor(private http: HttpClient, private _router: Router) { }
 
   get_all_songs(){
-    return this.http.get('http://localhost:8080/api/song/open')
+    return this.http.get('http://localhost:8080/api/song/open');
   }
 
   get_trending_songs() {
-    return this.http.get('http://localhost:8080/api/song/open')
+    return this.http.get('http://localhost:8080/api/song/open');
+  }
+
+  get_all_users(){
+    return this.http.get('http://localhost:8080/api/users');
   }
 
   get_reviews_open(id){
@@ -86,5 +90,13 @@ export class HttpService {
   
   delete_song(id){
     return this.http.delete(`http://localhost:8080/api/song/admin/delete/${id}`);
+  }
+
+  put_user_modify(user_details, id): Observable<object>{
+    return this.http.put(`http://localhost:8080/api/admin/update/${id}`, user_details, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
   }
 }

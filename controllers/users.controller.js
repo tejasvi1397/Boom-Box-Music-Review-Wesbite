@@ -157,3 +157,12 @@ exports.user_modify = function(req, res, next) {
         console.log(user_updated);
     })
 }
+
+//logic to get all users
+exports.user_get = function(req, res, next) {
+    user_model.find(function(err, users){
+        if (err) return next(err);
+        res.send(users);
+        console.log(users);
+    })
+};
