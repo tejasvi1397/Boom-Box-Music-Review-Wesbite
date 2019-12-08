@@ -98,3 +98,8 @@ button {
     }
   
   }
+  .required-error{
+    /* background: red; */
+    text-align: center;
+    color: red;
+  }

@@ -1,15 +1,23 @@
 <div class="signup">
-        <form method="POST">
+        <form method="POST" [formGroup]="form">
       
         <h1>Sign Up</h1>
         
         <fieldset>
           <legend><span class="number">Enter Information</span></legend>
           <label>Email (Username):</label>
-          <input type="email" [(ngModel)]="Email" id="signup_email" placeholder="Email" [ngModelOptions]="{standalone: true}">
+          <input type="email" [(ngModel)]="Email" name="Email" formControlName="Email" id="signup_email" placeholder="Email">
+          <div class="required-error" *ngIf = "form.get('Email').touched && form.get('Email').invalid">
+              <p *ngIf = "form.get('Email').errors.required">Email is Required</p>
+              <p *ngIf = "form.get('Email').errors.email">Enter a valid email address</p>
+          </div>
           
           <label>Password:</label>
-          <input type="password" [(ngModel)]="Password" id="signup_password" placeholder="Password" [ngModelOptions]="{standalone: true}">
+          <input type="password" [(ngModel)]="Password" name="Password" formControlName="Password" id="signup_password" placeholder="Password">
+          <div class="required-error" *ngIf = "form.get('Password').touched && form.get('Password').invalid">
+              <p *ngIf = "form.get('Password').errors.required">Password is Required</p>
+              <p *ngIf = "form.get('Password').errors.email">Password should be minimum of 5 characters</p>
+          </div>
         </fieldset>
         <button routerLink="/" (click)="signup_user()">Sign Up</button>
       </form>

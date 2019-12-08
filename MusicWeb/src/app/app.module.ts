@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { TrendingComponent } from './trending/trending.component';
 
-import{ FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginSuccessComponent } from './login-success/login-success.component';
 import { SongAddComponent } from './song-add/song-add.component';
@@ -19,6 +19,7 @@ import { ReviewAddComponent } from './review-add/review-add.component';
 import { RatingModule } from 'ng-starrating';
 import { AdminComponent } from './admin/admin.component';
 import { SongDeleteComponent } from './song-delete/song-delete.component';
+import { UserModifyComponent } from './user-modify/user-modify.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +34,14 @@ import { SongDeleteComponent } from './song-delete/song-delete.component';
     SongUpdateComponent,
     ReviewAddComponent,
     AdminComponent,
-    SongDeleteComponent
+    SongDeleteComponent,
+    UserModifyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RatingModule
   ],

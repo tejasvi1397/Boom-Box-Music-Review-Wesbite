@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-song-update',
@@ -61,5 +62,9 @@ export class SongUpdateComponent implements OnInit {
       })
     });
   }
-
+  //for form validation
+  form = new FormGroup({
+    Song_Title: new FormControl('', Validators.required),
+    Artist: new FormControl('', Validators.required)
+  })
 }

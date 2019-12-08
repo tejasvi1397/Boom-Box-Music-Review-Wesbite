@@ -1,15 +1,21 @@
 <div class="song-update">
-        <form method="POST">
+        <form method="POST" [formGroup]="form">
       
         <h1>Update Songs</h1>
         
         <fieldset>
           <legend><span class="number">Enter Song Details</span></legend>
           <label>Song Title:</label>
-          <input type="text" [(ngModel)]="Song_Title" id="song-update-songtitle" placeholder="Song Title" [ngModelOptions]="{standalone: true}">
+          <input type="text" [(ngModel)]="Song_Title" name="Song_Title" formControlName="Song_Title" id="song-update-songtitle" placeholder="Song Title">
+          <div class="required-error" *ngIf = "form.get('Song_Title').touched && form.get('Song_Title').invalid">
+              <p *ngIf = "form.get('Song_Title').errors.required">Song Title is Required</p>
+          </div>
           
           <label>Artist:</label>
-          <input type="text" [(ngModel)]="Artist" id="song-update-artist" placeholder="Artist" [ngModelOptions]="{standalone: true}">
+          <input type="text" [(ngModel)]="Artist" name="Artist" formControlName="Artist" id="song-update-artist" placeholder="Artist">
+          <div class="required-error" *ngIf = "form.get('Artist').touched && form.get('Artist').invalid">
+              <p *ngIf = "form.get('Artist').errors.required">Artist is Required</p>
+          </div>
 
           <label>Album:</label>
           <input type="text" [(ngModel)]="Album" id="song-update-album" placeholder="Album" [ngModelOptions]="{standalone: true}">

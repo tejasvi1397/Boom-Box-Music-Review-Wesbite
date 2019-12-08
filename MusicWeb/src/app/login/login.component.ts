@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -43,5 +44,11 @@ export class LoginComponent implements OnInit {
     err => console.log(err)
     )
   }
+
+  //for form validation
+  form = new FormGroup({
+    Email: new FormControl('', [Validators.required, Validators.email]),
+    Password: new FormControl('', Validators.required)
+  })
 
 }

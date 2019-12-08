@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-review-add',
@@ -54,5 +55,13 @@ export class ReviewAddComponent implements OnInit {
       })
     });
   }
+
+   //for form validation
+   form = new FormGroup({
+    Song_Title: new FormControl('', Validators.required),
+    Artist: new FormControl('', Validators.required),
+    Review_Comment: new FormControl('', Validators.required),
+    Rating: new FormControl('', Validators.required)
+  })
 
 }

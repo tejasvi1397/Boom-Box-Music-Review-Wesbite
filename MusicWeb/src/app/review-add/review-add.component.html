@@ -1,21 +1,33 @@
 <div class="review-add">
-        <form method="POST">
+        <form method="POST" [formGroup]="form">
       
         <h1>Add Reviews</h1>
         
         <fieldset>
           <legend><span class="number">Enter Review Details</span></legend>
           <label>Song Title:</label>
-          <input type="text" [(ngModel)]="Song_Title" id="review-add-songtitle" placeholder="Song Title" [ngModelOptions]="{standalone: true}">
+          <input type="text" [(ngModel)]="Song_Title" name="Song_Title" formControlName="Song_Title" id="review-add-songtitle" placeholder="Song Title">
+          <div class="required-error" *ngIf = "form.get('Song_Title').touched && form.get('Song_Title').invalid">
+              <p *ngIf = "form.get('Song_Title').errors.required">Song Title is Required</p>
+          </div>
           
           <label>Artist:</label>
-          <input type="text" [(ngModel)]="Artist" id="review-add-artist" placeholder="Artist" [ngModelOptions]="{standalone: true}">
+          <input type="text" [(ngModel)]="Artist" name="Artist" formControlName="Artist" id="review-add-artist" placeholder="Artist">
+          <div class="required-error" *ngIf = "form.get('Artist').touched && form.get('Artist').invalid">
+              <p *ngIf = "form.get('Artist').errors.required">Artist is Required</p>
+          </div>
 
           <label>Review Comment:</label>
-          <input type="text" [(ngModel)]="Review_Comment" id="review-add-Review_Comment" placeholder="Review Comment" [ngModelOptions]="{standalone: true}">
+          <input type="text" [(ngModel)]="Review_Comment" name="Review_Comment" formControlName="Review_Comment" id="review-add-Review_Comment" placeholder="Review Comment">
+          <div class="required-error" *ngIf = "form.get('Review_Comment').touched && form.get('Review_Comment').invalid">
+              <p *ngIf = "form.get('Review_Comment').errors.required">Comment is Required</p>
+          </div>
 
           <label>Rating:</label>
-          <input type="number" max="5" min="1" [(ngModel)]="Rating" id="review-add-Rating" placeholder="Rating" [ngModelOptions]="{standalone: true}">
+          <input type="number" max="5" min="1" [(ngModel)]="Rating" name="Rating" formControlName="Rating" id="review-add-Rating" placeholder="Rating">
+          <div class="required-error" *ngIf = "form.get('Rating').touched && form.get('Rating').invalid">
+              <p *ngIf = "form.get('Rating').errors.required">Rating is Required</p>
+          </div>
 
         </fieldset>
         <button routerLink="/login_success" (click)="add_review()">Add Review</button>
