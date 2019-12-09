@@ -119,4 +119,16 @@ export class HttpService {
   get_all_playlists() {
     return this.http.get('http://localhost:8080/api/playlist/secure');
   }
+
+  get_playlists_user(){
+    return this.http.get('http://localhost:8080/api/playlist/secure/user');
+  }
+
+  put_edit_playlist(playlist_details, id): Observable<object>{
+    return this.http.put(`http://localhost:8080/api/playlist/secure/update/${id}`, playlist_details, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 }

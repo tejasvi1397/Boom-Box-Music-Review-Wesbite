@@ -1,0 +1,45 @@
+<h1>Playlists</h1>
+  <ul *ngIf="playlist_list_user">
+    <li *ngFor="let playlist of playlist_list_user">
+      <!-- <ng-template [ngIf] = "playlist.Status == 'public'"> -->
+        <p class="playlist-title">Playlist Title: {{ playlist.Playlist_Title }} </p>  
+        <p class="playlist-desc">Description: {{ playlist.Description }} </p>  
+        <p class="playlist-songs">Songs: {{ playlist.Songs[0].Song_Title }} </p>
+        <p class="playlist-created">Created By: {{ playlist.Created_By }} </p>
+        <div class="playlist-edit-btns">
+            <button (click)="show_edit_playlist(playlist._id)">Edit</button>
+            <button>Add Songs</button> 
+            <button>Remove Songs</button>
+        </div>                      
+    <!-- </ng-template> -->
+    </li>
+  </ul>
+
+  <!-- to show edit box -->
+  <ng-template [ngIf] ="check_flag == 1">
+        <div class="edit-playlist">
+           <form method="POST" [formGroup]="form">
+                  
+             <h1>Edit Playlist</h1>
+                    
+                <fieldset>
+                 <legend><span class="number-edit-playlist">Enter Playlist Details</span></legend>
+                    <label>Playlist Title:</label>
+                    <input type="text" [(ngModel)]="Playlist_Title" name="Playlist_Title" formControlName="Playlist_Title" id="playlist-create-Playlist_Title" placeholder="Playlist Title">
+                    <div class="required-error" *ngIf = "form.get('Playlist_Title').touched && form.get('Playlist_Title').invalid">
+                        <p *ngIf = "form.get('Playlist_Title').errors.required">Playlist Title is Required</p>
+                    </div>
+              
+                    <label>Description:</label>
+                    <input type="text" [(ngModel)]="Description" id="playlist-create-Description" placeholder="Description" [ngModelOptions]="{standalone: true}">
+            
+                    <label>Status:</label>
+                    <select [(ngModel)]="Status" name="Status" id="playlist-create-Status" [ngModelOptions]="{standalone: true}">
+                      <option value="private">private</option>
+                      <option value="public">public</option>
+                   </select>
+                </fieldset>
+                    <button  (click)="edit_playlist()">Edit Playlist</button>
+            </form>
+         </div>
+      </ng-template>

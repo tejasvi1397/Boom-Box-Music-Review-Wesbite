@@ -14,11 +14,11 @@
           <label>Description:</label>
           <input type="text" [(ngModel)]="Description" id="playlist-create-Description" placeholder="Description" [ngModelOptions]="{standalone: true}">
 
-          <!-- <label>Song Title:</label>
-          <input type="text" [(ngModel)]="Song_Title1" id="playlist-create-songtitle" placeholder="Song Title" [ngModelOptions]="{standalone: true}">
-
-          <label>Song Title:</label>
-          <input type="text" [(ngModel)]="Song_Title2" id="playlist-create-songtitle" placeholder="Song Title" [ngModelOptions]="{standalone: true}"> -->
+          <label>Status:</label>
+          <select [(ngModel)]="Status" name="Status" id="playlist-create-Status" [ngModelOptions]="{standalone: true}">
+            <option value="private">private</option>
+            <option value="public">public</option>
+          </select>
           <p class="add-songs-playlist"><a (click)="show_song_search()">Click Here to Add Songs to Playlist</a></p>
         </fieldset>
         <button routerLink="/login_success" (click)="create_playlist()">Create Playlist</button>

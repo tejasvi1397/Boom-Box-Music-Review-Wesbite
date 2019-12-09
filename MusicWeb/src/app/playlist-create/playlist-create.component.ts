@@ -14,6 +14,7 @@ export class PlaylistCreateComponent implements OnInit {
   playlist_data: Object;
   Playlist_Title: string;
   Description: string;
+  Status: string;
   // Song_Title1: string;
   // Song_Title2: string;
   Song_Title_Playlist: Array<string> = [];
@@ -41,9 +42,11 @@ export class PlaylistCreateComponent implements OnInit {
     // console.log(this.Song_Title2);
     console.log('Inside create_playlist function');
     console.log(this.Song_Title_Playlist);
+    console.log(this.Status);
     let playlist_details = {
       Playlist_Title: this.Playlist_Title,
       Description: this.Description,
+      Status: this.Status,
       Song_Title: this.Song_Title_Playlist
     }
     this._http.post_playlist_create(JSON.stringify(playlist_details)).subscribe(data => {
