@@ -115,4 +115,8 @@ export class HttpService {
       })
     });
   }
+
+  get_all_playlists() {
+    return this.http.get('http://localhost:8080/api/playlist/secure');
+  }
 }

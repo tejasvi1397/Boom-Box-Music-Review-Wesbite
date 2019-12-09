@@ -1,0 +1,10 @@
+<h1>Playlists</h1>
+  <ul *ngIf="playlist_list">
+    <li *ngFor="let playlist of playlist_list" [style.display]="playlist.Status == 'public' ? 'inline-block' : 'none'">
+      <ng-template [ngIf] = "playlist.Status == 'public'">
+        <p class="playlist-title">Playlist Title: {{ playlist.Playlist_Title }} </p>  
+        <p class="playlist-desc">Description: {{ playlist.Description }} </p>  
+        <p class="playlist-songs">Songs: {{ playlist.Songs[0].Song_Title }} </p>                  
+    </ng-template>
+    </li>
+  </ul>

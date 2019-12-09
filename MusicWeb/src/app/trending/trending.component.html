@@ -2,7 +2,7 @@
 
 
   <ul *ngIf="trending_songs_list">
-    <li *ngFor="let song of trending_songs_list">
+    <li *ngFor="let song of trending_songs_list" [style.display]="song.Status == 'visible' ? 'inline-block' : 'none'">
       <ng-template [ngIf] = "song.Status == 'visible'">
         <p class="Song">Song: {{ song.Song_Title }} </p>
         <p class="Artist">Artist: {{ song.Artist }} </p>

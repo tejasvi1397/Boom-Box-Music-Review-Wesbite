@@ -4,6 +4,7 @@ const song_model = require('../models/songs.model');
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', true);
 
+//logic to create playlists
 exports.playlist_create = function (req, res, next) {
     var playlist = new playlist_model(
         {
@@ -26,13 +27,12 @@ exports.playlist_create = function (req, res, next) {
         // console.log('without songs')
         console.log(playlist);
     });
-
-    // var playlist_songs = {"song_id": req.body.song_id};
-    // playlist_model.findOneAndUpdate({Playlist_Title: req.body.Playlist_Title}, {$push: {Songs: playlist_songs}}, {new: true}, function(err, updated_playlist, next) {
-    //     if (err) {
-    //         return next(err);
-    //     }
-    //     console.log('with songs')
-    //     console.log(updated_playlist);
-    // });
 };
+
+//logic to display playlists
+exports.playlist_get = function(req, res, next) {
+    playlist_model.find(function (err, playlist) {
+        if (err) return next(err);
+        res.send(playlist);
+    })
+}

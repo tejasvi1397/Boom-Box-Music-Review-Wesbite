@@ -12,8 +12,6 @@ exports.review_songID = function (req, res, next) {
     review_model.find({Song: req.params.id}, exclude_fields, {sort: {Created: -1}},function (err, reviews) {
         if (err) return next(err);
         res.send(reviews);
-        console.log(reviews[0]['User_Name']);
-        console.log(`Count ${reviews.length}`)
     })
     // review_model.countDocuments({Song: req.params.id},function(err, count){
     //     // if (err) return next(err);
