@@ -1,0 +1,57 @@
+<div class="playlist-create">
+        <form method="POST" [formGroup]="form">
+      
+        <h1>Create Playlist</h1>
+        
+        <fieldset>
+          <legend><span class="number-playlist">Enter Playlist Details</span></legend>
+          <label>Playlist Title:</label>
+          <input type="text" [(ngModel)]="Playlist_Title" name="Playlist_Title" formControlName="Playlist_Title" id="playlist-create-Playlist_Title" placeholder="Playlist Title">
+          <div class="required-error" *ngIf = "form.get('Playlist_Title').touched && form.get('Playlist_Title').invalid">
+              <p *ngIf = "form.get('Playlist_Title').errors.required">Playlist Title is Required</p>
+          </div>
+
+          <label>Description:</label>
+          <input type="text" [(ngModel)]="Description" id="playlist-create-Description" placeholder="Description" [ngModelOptions]="{standalone: true}">
+
+          <!-- <label>Song Title:</label>
+          <input type="text" [(ngModel)]="Song_Title1" id="playlist-create-songtitle" placeholder="Song Title" [ngModelOptions]="{standalone: true}">
+
+          <label>Song Title:</label>
+          <input type="text" [(ngModel)]="Song_Title2" id="playlist-create-songtitle" placeholder="Song Title" [ngModelOptions]="{standalone: true}"> -->
+          <p class="add-songs-playlist"><a (click)="show_song_search()">Click Here to Add Songs to Playlist</a></p>
+        </fieldset>
+        <button routerLink="/login_success" (click)="create_playlist()">Create Playlist</button>
+      </form>
+  </div>
+
+  <!-- to show the search box -->
+  <ng-template [ngIf] ="check_flag == 1">
+    <div class="search-song">
+       <form method="POST">
+              
+         <h1>Search</h1>
+                
+            <fieldset>
+             <legend><span class="number">Enter Keywords</span></legend>
+                 <label>Search:</label>
+                 <input type="text" [(ngModel)]="Search" id="search_keywords" placeholder="Keywords" [ngModelOptions]="{standalone: true}">
+            </fieldset>
+                <button (click)="search_song()">Search</button>
+        </form>
+     </div>
+  </ng-template>
+
+  <!-- to show search results -->
+  <ul *ngIf="search_songs_results">
+        <li *ngFor="let song of search_songs_results">
+            <p class="Song">Song: {{ song.Song_Title }} </p>
+            <p class="Artist">Artist: {{ song.Artist }} </p>
+            <p class="Album">Album: {{ song.Album }}</p>
+            <p class="Year">Year: {{ song.Year }}</p>
+            <p class="Genre">Genre: {{ song.Genre }}</p>
+            <p class="Avg_Rating">Average Rating: {{ song.Average_Ratings }} <star-rating value="{{ song.Average_Ratings }}" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true" (rate)="onRate($event)"></star-rating></p>
+            <p class="add-to-playlist-btn"><button (click)="add_song_playlist(song.Song_Title)">Add to Playlist</button></p>
+             <!-- <p class="Show_Review"><button (click)="show_review_for_song(song._id)">Show Reviews</button></p> -->
+        </li>
+</ul>

@@ -107,4 +107,12 @@ export class HttpService {
       })
     });
   }
+
+  post_playlist_create(playlist_details): Observable<object>{
+    return this.http.post('http://localhost:8080/api/playlist/secure/create', playlist_details, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 }

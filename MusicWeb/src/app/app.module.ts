@@ -21,6 +21,7 @@ import { AdminComponent } from './admin/admin.component';
 import { SongDeleteComponent } from './song-delete/song-delete.component';
 import { UserModifyComponent } from './user-modify/user-modify.component';
 import { ModifySongStatusComponent } from './modify-song-status/modify-song-status.component';
+import { PlaylistCreateComponent } from './playlist-create/playlist-create.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ModifySongStatusComponent } from './modify-song-status/modify-song-stat
     AdminComponent,
     SongDeleteComponent,
     UserModifyComponent,
-    ModifySongStatusComponent
+    ModifySongStatusComponent,
+    PlaylistCreateComponent
   ],
   imports: [
     BrowserModule,
