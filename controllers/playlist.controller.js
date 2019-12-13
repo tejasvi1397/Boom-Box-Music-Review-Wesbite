@@ -66,3 +66,12 @@ exports.playlist_add_songs = function(req, res, next) {
         console.log(playlist);
     })
 }
+
+//logic to remove songs from playlist
+exports.playlist_remove_songs = function(req, res, next) {
+    playlist_model.findOneAndUpdate( {_id: req.params.id}, {$pullAll: {'Songs.0.Song_Title': req.body.Song_Title}}, {new: true}, function(err, playlist, next) {
+         if (err) return next(err);
+         res.send(playlist);
+         console.log(playlist);
+    })
+}

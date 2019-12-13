@@ -19,4 +19,7 @@ playlist_router.put('/secure/update/:id', user_controller.jwt_verify, playlist_c
 //route to add songs to playlist
 playlist_router.put('/secure/add/songs/:id', user_controller.jwt_verify, playlist_controller.playlist_add_songs);
 
+//route to remove songs from playlist
+playlist_router.put('/secure/remove/songs/:id', user_controller.jwt_verify, playlist_controller.playlist_remove_songs);
+
 module.exports = playlist_router;
