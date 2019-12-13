@@ -56,3 +56,13 @@ exports.playlist_edit = function (req, res, next) {
         console.log(playlist);
     });
 };
+
+//logic to add songs to playlist
+exports.playlist_add_songs = function(req, res, next) {
+    // var playlist_songs = {"Song_Title": req.body.Song_Title};
+    playlist_model.findOneAndUpdate( {_id: req.params.id}, {$push: {'Songs.0.Song_Title': req.body.Song_Title}}, {new: true}, function(err, playlist, next) {
+        // if (err) return next(err);
+        res.send(playlist);
+        console.log(playlist);
+    })
+}

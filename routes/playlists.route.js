@@ -11,9 +11,12 @@ playlist_router.post('/secure/create' , user_controller.jwt_verify, playlist_con
 playlist_router.get('/secure', user_controller.jwt_verify, playlist_controller.playlist_get);
 
 //route to display playlists for logged in user
-playlist_router.get('/secure/user', user_controller.jwt_verify, playlist_controller.playlist_get_user)
+playlist_router.get('/secure/user', user_controller.jwt_verify, playlist_controller.playlist_get_user);
 
 //route to edit playlist
-playlist_router.put('/secure/update/:id', user_controller.jwt_verify, playlist_controller.playlist_edit)
+playlist_router.put('/secure/update/:id', user_controller.jwt_verify, playlist_controller.playlist_edit);
+
+//route to add songs to playlist
+playlist_router.put('/secure/add/songs/:id', user_controller.jwt_verify, playlist_controller.playlist_add_songs);
 
 module.exports = playlist_router;
