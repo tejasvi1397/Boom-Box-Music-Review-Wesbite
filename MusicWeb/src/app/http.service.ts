@@ -131,4 +131,12 @@ export class HttpService {
       })
     });
   }
+
+  put_add_songs_playlist(playlist_details, id): Observable<object>{
+    return this.http.put(`http://localhost:8080/api/playlist/secure/add/songs/${id}`, playlist_details, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 }
