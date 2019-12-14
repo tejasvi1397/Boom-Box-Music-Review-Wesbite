@@ -22,4 +22,7 @@ playlist_router.put('/secure/add/songs/:id', user_controller.jwt_verify, playlis
 //route to remove songs from playlist
 playlist_router.put('/secure/remove/songs/:id', user_controller.jwt_verify, playlist_controller.playlist_remove_songs);
 
+//route to delete playlist
+playlist_router.delete('/admin/delete/:id', user_controller.jwt_verify, playlist_controller.playlist_delete);
+
 module.exports = playlist_router;

@@ -75,3 +75,12 @@ exports.playlist_remove_songs = function(req, res, next) {
          console.log(playlist);
     })
 }
+
+//logic to delete playlist by admin
+exports.playlist_delete = function(req, res, next) {
+    playlist_model.findOneAndDelete({_id: req.params.id}, function(err, playlist_deleted, next) {
+        if (err) return next(err);
+         res.send(playlist_deleted);
+         console.log(playlist_deleted);
+    })
+}

@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', true);
 const jwt = require('jsonwebtoken');
 
-//create song
+//create song and review
 exports.song_create = function (req, res, next) {
     var song = new song_model(
         {
@@ -29,6 +29,7 @@ exports.song_create = function (req, res, next) {
             return next(err);
         }
         res.send('Song Added successfully');
+
 
     });
 };
