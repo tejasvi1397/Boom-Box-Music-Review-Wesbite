@@ -11,6 +11,9 @@ export class SearchComponent implements OnInit {
   search_songs_results: Object;
   Search: string;
 
+  reviews_of_song_list: Object;
+  check_flag: number;
+
   constructor(private _http: HttpService) { }
 
   ngOnInit() {
@@ -25,5 +28,22 @@ export class SearchComponent implements OnInit {
     },
     err => console.log(err))
   }
+
+  show_review_for_song(song_id){
+    this._http.get_reviews_open(song_id).subscribe(data => {
+      this.reviews_of_song_list = data;
+      this.check_flag = 1;
+      console.log(this.reviews_of_song_list);
+    })
+  }
+
+  show_all_reviews(){
+    this.check_flag = 2;
+  }
+  hide_reviews(){
+    this.check_flag = 3;
+  }
+
+  
 
 }
