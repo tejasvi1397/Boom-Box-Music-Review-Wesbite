@@ -17,6 +17,8 @@ import { ModifySongStatusComponent } from './modify-song-status/modify-song-stat
 import { PlaylistCreateComponent } from './playlist-create/playlist-create.component';
 import { PlaylistViewComponent } from './playlist-view/playlist-view.component';
 import { PlaylistEditComponent } from './playlist-edit/playlist-edit.component';
+import { PlaylistViewAdminComponent } from './playlist-view-admin/playlist-view-admin.component';
+import { PlaylistDeleteComponent } from './playlist-delete/playlist-delete.component';
 import { AuthGuard } from './auth.guard'
 
 
@@ -36,7 +38,9 @@ const routes: Routes = [
   { path: 'modify_song_status', component: ModifySongStatusComponent },
   { path: 'playlist_create', component: PlaylistCreateComponent },
   { path: 'playlist_view', component: PlaylistViewComponent },
-  { path: 'playlist_edit', component: PlaylistEditComponent }
+  { path: 'playlist_edit', component: PlaylistEditComponent },
+  { path: 'playlist_view_admin', component: PlaylistViewAdminComponent },
+  { path: 'playlist_delete', component: PlaylistDeleteComponent }
 ];
 
 @NgModule({

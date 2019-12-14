@@ -21,7 +21,7 @@
           </select>
           <p class="add-songs-playlist"><a (click)="show_song_search()">Click Here to Add Songs to Playlist</a></p>
         </fieldset>
-        <button routerLink="/login_success" (click)="create_playlist()" [disabled]="!form.valid">Create Playlist</button>
+        <button  (click)="create_playlist()" [disabled]="!form.valid">Create Playlist</button>
       </form>
   </div>
 

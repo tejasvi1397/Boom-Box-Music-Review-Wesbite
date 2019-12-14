@@ -84,3 +84,12 @@ exports.playlist_delete = function(req, res, next) {
          console.log(playlist_deleted);
     })
 }
+
+//logic to display all playlists public and private only to admin
+exports.playlist_get_all = function(req, res, next) {
+    playlist_model.find(function (err, playlist) {
+        if (err) return next(err);
+        res.send(playlist);
+        console.log(playlist);
+    })
+}

@@ -29,6 +29,6 @@
           <label>Genre:</label>
           <input type="text" [(ngModel)]="Genre" id="song-update-genre" placeholder="Genre" [ngModelOptions]="{standalone: true}">
         </fieldset>
-        <button routerLink="/login_success" (click)="update_song()" [disabled]="!form.valid">Update Song</button>
+        <button  (click)="update_song()" [disabled]="!form.valid">Update Song</button>
       </form>
   </div>

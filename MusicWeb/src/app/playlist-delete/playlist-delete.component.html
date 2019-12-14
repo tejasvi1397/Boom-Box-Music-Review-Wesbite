@@ -4,6 +4,7 @@
         <p class="playlist-title">Playlist Title: {{ playlist.Playlist_Title }} </p>  
         <p class="playlist-desc">Description: {{ playlist.Description }} </p>  
         <p class="playlist-songs">Songs: {{ playlist.Songs[0].Song_Title }} </p>
-        <p class="playlist-created">Created By: {{ playlist.Created_By }} </p>                     
+        <p class="playlist-created">Created By: {{ playlist.Created_By }} </p> 
+        <p><button (click) = "delete_playlist(playlist._id)">Delete Playlist</button></p>                    
     </li>
   </ul>

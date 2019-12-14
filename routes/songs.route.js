@@ -15,6 +15,9 @@ song_router.get('/secure/', user_controller.jwt_verify, song_controller.song_get
 //route to get list of songs(open)
 song_router.get('/open/', song_controller.song_get_open);
 
+//route to get trending songs (top 10)
+song_router.get('/open/trending', song_controller.song_get_trending);
+
 //route to get list of songs based on search criteria
 song_router.post('/open/search', song_controller.song_search);
 

@@ -55,6 +55,14 @@ exports.song_get_open = function (req, res, next) {
     })
 };
 
+//logic to get trending songs
+exports.song_get_trending = function (req, res, next) {
+    song_model.find({}, null, {sort: {Average_Ratings: -1}}, function (err, songs) {
+        if (err) return next(err);
+        res.send(songs);
+    }).limit(10)
+};
+
 //logic to get songs based on search keyword
 exports.song_search = function(req, res, next) {
     song_model.find({ $text: { $search : req.body.Search } },function (err, songs) {

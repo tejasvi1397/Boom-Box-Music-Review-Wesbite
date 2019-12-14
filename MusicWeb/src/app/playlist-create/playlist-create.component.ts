@@ -51,6 +51,7 @@ export class PlaylistCreateComponent implements OnInit {
     }
     this._http.post_playlist_create(JSON.stringify(playlist_details)).subscribe(data => {
       this.playlist_data = data
+      window.location.reload();
       alert("Playlist Added");
       console.log(this.playlist_data);
     },

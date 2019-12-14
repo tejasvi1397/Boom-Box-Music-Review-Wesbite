@@ -13,6 +13,9 @@ playlist_router.get('/secure', user_controller.jwt_verify, playlist_controller.p
 //route to display playlists for logged in user
 playlist_router.get('/secure/user', user_controller.jwt_verify, playlist_controller.playlist_get_user);
 
+//route to display all playlists (public and private)
+playlist_router.get('/admin', user_controller.jwt_verify, playlist_controller.playlist_get_all);
+
 //route to edit playlist
 playlist_router.put('/secure/update/:id', user_controller.jwt_verify, playlist_controller.playlist_edit);
 

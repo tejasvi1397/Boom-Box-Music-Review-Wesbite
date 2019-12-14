@@ -15,7 +15,7 @@ export class HttpService {
   }
 
   get_trending_songs() {
-    return this.http.get('http://localhost:8080/api/song/open');
+    return this.http.get('http://localhost:8080/api/song/open/trending');
   }
 
   get_all_users(){
@@ -146,6 +146,14 @@ export class HttpService {
         'Content-Type': 'application/json'
       })
     });
+  }
+
+  get_playlists_admin_view(){
+    return this.http.get('http://localhost:8080/api/playlist/admin');
+  }
+
+  delete_playlist(id){
+    return this.http.delete(`http://localhost:8080/api/playlist/admin/delete/${id}`);
   }
 
 }

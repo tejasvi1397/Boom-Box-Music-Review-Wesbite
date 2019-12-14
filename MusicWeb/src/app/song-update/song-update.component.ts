@@ -50,6 +50,7 @@ export class SongUpdateComponent implements OnInit {
 
       this._http.put_song_update(JSON.stringify(song_details), this._id).subscribe(data => {
         this.song_data = data
+        window.location.reload();
         alert("Song Updated")
         console.log(`Updated Song ${this.song_data}`);
       },

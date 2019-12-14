@@ -43,6 +43,7 @@ export class ReviewAddComponent implements OnInit {
 
       this._http.put_review_add(JSON.stringify(review_details), this._id).subscribe(data => {
         this.review_data = data
+        window.location.reload();
         alert("Review Added");
         console.log(`Review Added ${this.review_data}`);
       },
