@@ -24,6 +24,6 @@
          </select>
 
         </fieldset>
-        <button routerLink="/admin" (click)="modify_song_status()">Modify</button>
+        <button routerLink="/admin" (click)="modify_song_status()" [disabled]="!form.valid">Modify</button>
       </form>
   </div>

@@ -18,6 +18,6 @@
           </div>
 
         </fieldset>
-        <button routerLink="/admin" (click)="delete_song()">Delete Song</button>
+        <button routerLink="/admin" (click)="delete_song()" [disabled]="!form.valid">Delete Song</button>
       </form>
   </div>

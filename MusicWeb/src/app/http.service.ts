@@ -139,4 +139,13 @@ export class HttpService {
       })
     });
   }
+
+  put_remove_songs_playlist(playlist_details, id): Observable<object>{
+    return this.http.put(`http://localhost:8080/api/playlist/secure/remove/songs/${id}`, playlist_details, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
 }

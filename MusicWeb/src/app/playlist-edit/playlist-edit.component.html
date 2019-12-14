@@ -8,8 +8,8 @@
         <p class="playlist-created">Created By: {{ playlist.Created_By }} </p>
         <div class="playlist-edit-btns">
             <button (click)="show_edit_playlist(playlist._id)">Edit</button>
-            <button (click)="show_add_songs_playlist(playlist._id)">Add Songs</button> 
-            <button>Remove Songs</button>
+            <button (click)="show_add_songs_playlist(playlist._id, playlist.Songs[0].Song_Title)">Add Songs</button> 
+            <button (click)="show_remove_songs_playlist(playlist._id, playlist.Songs[0].Song_Title)">Remove Songs</button>
         </div>                      
     <!-- </ng-template> -->
     </li>
@@ -39,7 +39,7 @@
                       <option value="public">public</option>
                    </select>
                 </fieldset>
-                    <button  (click)="edit_playlist()">Edit Playlist</button>
+                    <button  (click)="edit_playlist()" [disabled]="!form.valid">Edit Playlist</button>
             </form>
          </div>
     </ng-template>
@@ -73,3 +73,22 @@
         <p class="add-to-playlist-btn"><button (click)="add_song_playlist(song.Song_Title)">Add to Playlist</button></p>
     </li>
 </ul>
+
+<!-- to show remove songs -->
+<ng-template [ngIf] ="check_flag == 3">
+    <div class="remove-song">
+         <form method="POST">
+                          
+            <h1>Select Songs to Remove</h1>
+                            
+                <fieldset>
+                    <legend><span class="number-remove-song">Select Songs</span></legend>
+                        <label>Songs:</label>
+                        <ng-container *ngFor = "let song_removed of songs_array_show_remove">
+                             <input type="checkbox" value="{{ song_removed }}" (click) = "add_songs_to_array(song_removed)">{{ song_removed }}<br>
+                        </ng-container>  
+                 </fieldset>
+                       <button (click)="remove_song_playlist()">Remove Songs</button>
+        </form>
+     </div>
+</ng-template>

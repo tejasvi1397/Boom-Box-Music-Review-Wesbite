@@ -19,7 +19,7 @@
               <p *ngIf = "form.get('Password').errors.email">Password should be minimum of 5 characters</p>
           </div>
         </fieldset>
-        <button routerLink="/" (click)="signup_user()">Sign Up</button>
+        <button routerLink="/" (click)="signup_user()" [disabled]="!form.valid">Sign Up</button>
         <p class="already-registered"><a href="#" routerLink="/login">Already Registered? Login Here!</a></p>
       </form>
   </div>

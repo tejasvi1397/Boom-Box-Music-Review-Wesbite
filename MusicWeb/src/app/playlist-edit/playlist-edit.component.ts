@@ -14,6 +14,7 @@ export class PlaylistEditComponent implements OnInit {
   playlist_list_user: Object;
   edit_id: string;
   add_id: string;
+  remove_id: string;
   playlist_data: Object;
   Playlist_Title: string;
   Description: string;
@@ -25,7 +26,14 @@ export class PlaylistEditComponent implements OnInit {
   Search: string;
 
   //for add_song_playlist
+  songs_array_show_add: Array<string>;
   song_added: string;
+
+  //for show remove_song
+  songs_array_show_remove: Array<string>;
+
+  //for removing song
+  Song_Title_Removed: Array<string> = [];
 
   constructor(private _http: HttpService, private _router: Router) { }
 
@@ -34,7 +42,7 @@ export class PlaylistEditComponent implements OnInit {
       this.playlist_list_user = data;
       console.log(this.playlist_list_user);
       console.log('testing shuru playlist');
-      console.log(this.playlist_list_user[0].Songs[0].Song_Title);
+      // console.log(this.playlist_list_user[0].Songs[0].Song_Title);
     });
   }
 
@@ -56,6 +64,7 @@ export class PlaylistEditComponent implements OnInit {
     this._http.put_edit_playlist(JSON.stringify(playlist_details), this.edit_id).subscribe(data => {
       this.playlist_data = data
       // this._router.navigate(['/playlist_edit']);
+      window.location.reload();
       alert("Playlist Updated");
       console.log(`Updated Playlist ${this.playlist_data}`);
     },
@@ -68,9 +77,10 @@ export class PlaylistEditComponent implements OnInit {
     })
   }
 
-  show_add_songs_playlist(playlist_id){
+  show_add_songs_playlist(playlist_id, songs_in_playlist){
     this.check_flag = 2;
     this.add_id = playlist_id;
+    this.songs_array_show_add = songs_in_playlist;
     console.log('inside show add songs function');
     console.log(this.add_id);
   }
@@ -92,7 +102,7 @@ export class PlaylistEditComponent implements OnInit {
     console.log(this.add_id);
     // console.log(this.playlist_list_user[0].Songs[0].Song_Title);
     console.log(`Song title after adding to playlist ${Song_Title}`);
-    if(this.playlist_list_user[0].Songs[0].Song_Title.includes(Song_Title)){
+    if(this.songs_array_show_add.includes(Song_Title)){
       alert('Song already in playlist');
     }
     else{
@@ -102,7 +112,7 @@ export class PlaylistEditComponent implements OnInit {
       };
       this._http.put_add_songs_playlist(JSON.stringify(playlist_details), this.add_id).subscribe(data => {
         this.playlist_data = data
-        alert("Songs Added to Playlist");
+        alert("Song Added to Playlist");
       },
       err => {
         if( err instanceof HttpErrorResponse ){
@@ -114,6 +124,54 @@ export class PlaylistEditComponent implements OnInit {
       // this.song_added_array.push(Song_Title);
     }
   }
+
+  //remove songs
+  show_remove_songs_playlist(playlist_id, songs_in_playlist){
+    this.check_flag = 3;
+    this.remove_id = playlist_id;
+    this.songs_array_show_remove = songs_in_playlist;
+    console.log('inside show remove songs function');
+    console.log(this.remove_id);
+    console.log(this.songs_array_show_remove);
+  }
+
+  add_songs_to_array(song_removed){
+    console.log('Inside add song to array func');
+    if(this.Song_Title_Removed.includes(song_removed)){
+      let song_index = this.Song_Title_Removed.indexOf(song_removed);
+      if(song_index > -1){
+        this.Song_Title_Removed.splice(song_index, 1);
+      }
+      console.log('inside if');
+      console.log(this.Song_Title_Removed);
+    }
+    else{
+      this.Song_Title_Removed.push(song_removed);
+      console.log('inside else');
+      console.log(this.Song_Title_Removed);
+    }
+  }
+
+  remove_song_playlist(){
+    console.log('inside remove_song_playlist function');
+    console.log(this.Song_Title_Removed);
+    let playlist_details = {
+      Song_Title: this.Song_Title_Removed
+    }
+    this._http.put_remove_songs_playlist(JSON.stringify(playlist_details), this.remove_id).subscribe(data => {
+      this.playlist_data = data
+      window.location.reload();
+      alert("Song Removed from Playlist");
+    },
+    err => {
+      if( err instanceof HttpErrorResponse ){
+        if( err.status === 401 ) {
+          this._router.navigate(['/login'])
+        }
+      }
+    })
+  }
+
 
   //for form validation
   form = new FormGroup({

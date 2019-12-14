@@ -26,6 +26,6 @@
          </select>
           
         </fieldset>
-        <button routerLink="/login_success" (click)="modify_user()">Modify User Details</button>
+        <button routerLink="/login_success" (click)="modify_user()" [disabled]="!form.valid">Modify User Details</button>
       </form>
   </div>
