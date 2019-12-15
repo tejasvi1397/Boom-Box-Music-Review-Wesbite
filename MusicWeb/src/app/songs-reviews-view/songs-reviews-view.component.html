@@ -18,7 +18,7 @@
 
 <!-- for getting the top review -->
 <ng-template [ngIf] ="check_flag == 1" [ngIfElse]="none">
-    <h1>Reviews</h1><button class="hide_button" (click)="hide_reviews()">Hide Reviews</button>
+    <h1 class="review-heading">Reviews</h1><button class="hide_button" (click)="hide_reviews()">Hide Reviews</button>
     <ul *ngIf="reviews_of_song_list">
         <li class="top-review-li">
           <h3>Latest Review</h3>
@@ -33,7 +33,7 @@
 <!-- getting all reviews -->
 
 <ng-template [ngIf] ="check_flag == 2">
-    <h1>Reviews</h1><button class="hide_button" (click)="hide_reviews()">Hide Reviews</button>
+    <h1 class="review-heading">Reviews</h1><button class="hide_button" (click)="hide_reviews()">Hide Reviews</button>
     <ul *ngIf="reviews_of_song_list">
         <li class="all-review-li" *ngFor="let review of reviews_of_song_list">
           <p class="Review">Comment: {{ review.Review_Comment }} </p>

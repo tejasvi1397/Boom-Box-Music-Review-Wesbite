@@ -1,3 +1,14 @@
-/* body{
-    background-image:url("/assets/images/Liquid-Light-Wave-Abstract-Motion-Backgrounds-For-Music\ \(1\).png") ;
-} */
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+.bg{
+    height: 250%;
+    /* width: auto; */
+    /* margin: 0; */
+    background-image:url("/assets/images/bg5.jpg") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  
+}

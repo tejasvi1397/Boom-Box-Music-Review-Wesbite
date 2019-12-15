@@ -234,6 +234,7 @@ li {
     margin-bottom: 1em;
     display: flex;
     flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
 }
 /* p {
     margin: 0;

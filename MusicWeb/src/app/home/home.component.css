@@ -1,3 +1,23 @@
 .about-para{
     border: 1px solid black;
+    color: black;
+    background: rgb(238, 238, 238);
+    padding: 1em;
+    margin-right: 10px;
+    width: auto;
+    height: 110px;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 19.4px;
+}
+h1, h2 {
+    color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2{
+    text-align: start;
 }

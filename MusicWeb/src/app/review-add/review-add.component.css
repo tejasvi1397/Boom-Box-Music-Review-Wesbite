@@ -107,7 +107,7 @@ input[type="number"]
 
   ul {
     list-style-type: none;
-    margin: 0;
+    margin: 1em;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
@@ -121,6 +121,7 @@ li {
     margin-bottom: 1em;
     display: flex;
     flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
 }
 /* p {
     margin: 0;

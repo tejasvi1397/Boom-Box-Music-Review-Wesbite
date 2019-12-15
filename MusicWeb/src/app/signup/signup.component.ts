@@ -24,6 +24,7 @@ export class SignupComponent implements OnInit {
     console.log(`test ${this.Email}`)
     this._http.post_signup_user(JSON.stringify(user_details)).subscribe(data => {
       this.signup_user_data = data
+      alert("Sign Up Successful! You can now login")
       console.log(data);
     },
     err => {
