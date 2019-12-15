@@ -104,3 +104,10 @@ button {
     text-align: center;
     color: red;
   }
+  .create-new-account{
+    text-align: center;
+  }
+  .create-new-account a{
+    text-decoration: none;
+    color: white;
+  }

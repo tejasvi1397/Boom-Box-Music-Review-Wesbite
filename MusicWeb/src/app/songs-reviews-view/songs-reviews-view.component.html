@@ -1,8 +1,8 @@
-<h1>Trending Songs</h1>
+<h1>Songs</h1>
 
 
-  <ul *ngIf="trending_songs_list">
-    <li *ngFor="let song of trending_songs_list" [style.display]="song.Status == 'visible' ? 'inline-block' : 'none'">
+  <ul *ngIf="songs_list">
+    <li *ngFor="let song of songs_list" [style.display]="song.Status == 'visible' ? 'inline-block' : 'none'">
       <ng-template [ngIf] = "song.Status == 'visible'">
         <p class="Song">Song: {{ song.Song_Title }} </p>
         <p class="Artist">Artist: {{ song.Artist }} </p>
@@ -15,15 +15,6 @@
     </ng-template>
     </li>
   </ul>
-
-<!-- <ng-template [ngIf] ="reviews_of_song_list">
-  <h1>Reviews</h1>
-  <ul>
-      <li *ngFor="let review of reviews_of_song_list">
-          <p class="Review">Comment: {{ review.Review_Comment }} </p>
-      </li>
-    </ul>
-</ng-template> -->
 
 <!-- for getting the top review -->
 <ng-template [ngIf] ="check_flag == 1" [ngIfElse]="none">

@@ -26,7 +26,10 @@ export class SignupComponent implements OnInit {
       this.signup_user_data = data
       console.log(data);
     },
-    err => console.log(err))
+    err => {
+      console.log(err.error);
+      alert(err.error);
+    })
   }
   //for form validation
   form = new FormGroup({

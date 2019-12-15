@@ -104,3 +104,31 @@ button {
     text-align: center;
     color: red;
   }
+  .add-review{
+    text-align: center;
+  }
+  .add-review a{
+    text-decoration: none;
+    color: white;
+  }
+
+  /* for review box*/
+  .review-add{
+    color: #FFF;
+    font-family: 'Nunito', sans-serif;
+  }
+  .review-add-number {
+    background-color: #4bc970;
+    color: #fff;
+    height: 30px;
+    width: 239%;
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 5px;
+  }
+
+  

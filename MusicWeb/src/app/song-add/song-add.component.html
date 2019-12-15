@@ -30,5 +30,34 @@
           <input type="text" [(ngModel)]="Genre" id="song-add-genre" placeholder="Genre" [ngModelOptions]="{standalone: true}">
         </fieldset>
         <button routerLink="/login_success" (click)="add_song()" [disabled]="!form.valid">Add Song</button>
+        <p class="add-review"><a (click)="show_add_review()">Click here to Add Review</a></p>
       </form>
   </div>
+
+  <!-- show the review box -->
+  <ng-template [ngIf] ="check_flag == 1">
+    <div class="review-add">
+      <form method="POST" [formGroup]="form_review">
+            
+        <h1>Add Reviews</h1>
+              
+          <fieldset>
+            <legend><span class="review-add-number">Enter Review Details</span></legend>
+      
+            <label>Review Comment:</label>
+              <input type="text" [(ngModel)]="Review_Comment" name="Review_Comment" formControlName="Review_Comment" id="review-add-Review_Comment" placeholder="Review Comment">
+              <div class="required-error" *ngIf = "form_review.get('Review_Comment').touched && form_review.get('Review_Comment').invalid">
+                <p *ngIf = "form_review.get('Review_Comment').errors.required">Comment is Required</p>
+              </div>
+      
+            <label>Rating:</label>
+              <input type="number" max="5" min="1" [(ngModel)]="Rating" name="Rating" formControlName="Rating" id="review-add-Rating" placeholder="Rating">
+              <div class="required-error" *ngIf = "form_review.get('Rating').touched && form_review.get('Rating').invalid">
+                <p *ngIf = "form_review.get('Rating').errors.required">Rating is Required</p>
+              </div>
+      
+           </fieldset>
+              <button  (click)="add_song_and_review()" [disabled]="!form_review.valid">Add Song with Review</button>
+       </form>
+      </div>
+ </ng-template>

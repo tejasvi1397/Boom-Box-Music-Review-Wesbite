@@ -26,6 +26,7 @@ import { PlaylistViewComponent } from './playlist-view/playlist-view.component';
 import { PlaylistEditComponent } from './playlist-edit/playlist-edit.component';
 import { PlaylistViewAdminComponent } from './playlist-view-admin/playlist-view-admin.component';
 import { PlaylistDeleteComponent } from './playlist-delete/playlist-delete.component';
+import { SongsReviewsViewComponent } from './songs-reviews-view/songs-reviews-view.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { PlaylistDeleteComponent } from './playlist-delete/playlist-delete.compo
     PlaylistViewComponent,
     PlaylistEditComponent,
     PlaylistViewAdminComponent,
-    PlaylistDeleteComponent
+    PlaylistDeleteComponent,
+    SongsReviewsViewComponent
   ],
   imports: [
     BrowserModule,

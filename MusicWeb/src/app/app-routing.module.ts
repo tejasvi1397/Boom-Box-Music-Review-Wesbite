@@ -19,6 +19,7 @@ import { PlaylistViewComponent } from './playlist-view/playlist-view.component';
 import { PlaylistEditComponent } from './playlist-edit/playlist-edit.component';
 import { PlaylistViewAdminComponent } from './playlist-view-admin/playlist-view-admin.component';
 import { PlaylistDeleteComponent } from './playlist-delete/playlist-delete.component';
+import { SongsReviewsViewComponent } from './songs-reviews-view/songs-reviews-view.component';
 import { AuthGuard } from './auth.guard'
 
 
@@ -40,7 +41,8 @@ const routes: Routes = [
   { path: 'playlist_view', component: PlaylistViewComponent },
   { path: 'playlist_edit', component: PlaylistEditComponent },
   { path: 'playlist_view_admin', component: PlaylistViewAdminComponent },
-  { path: 'playlist_delete', component: PlaylistDeleteComponent }
+  { path: 'playlist_delete', component: PlaylistDeleteComponent },
+  { path: 'songs_reviews_view', component: SongsReviewsViewComponent }
 ];
 
 @NgModule({

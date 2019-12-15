@@ -1,3 +1,20 @@
+<ul *ngIf="songs_list">
+        <li *ngFor="let song of songs_list" [style.display]="song.Status == 'visible' ? 'inline-block' : 'none'">
+          <ng-template [ngIf] = "song.Status == 'visible'">
+            <p class="Song">Song: {{ song.Song_Title }} </p>
+            <p class="Artist">Artist: {{ song.Artist }} </p>
+            <p class="Album">Album: {{ song.Album }}</p>
+            <p class="Year">Year: {{ song.Year }}</p>
+            <p class="Genre">Genre: {{ song.Genre }}</p>
+            <p class="Avg_Rating">Average Rating: {{ song.Average_Ratings }} <star-rating value="{{ song.Average_Ratings }}" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true" (rate)="onRate($event)"></star-rating></p>
+            <p class="No_of_Ratings">Total Reviews: {{ song.Number_Of_Ratings }}</p>
+            <p class="Add_Review"><button (click)="show_add_review(song._id)">Add Reviews</button></p>                   
+        </ng-template>
+        </li>
+      </ul>
+
+<!-- to show add review box -->
+<ng-template [ngIf] ="check_flag == 1">
 <div class="review-add">
         <form method="POST" [formGroup]="form">
       
@@ -5,17 +22,6 @@
         
         <fieldset>
           <legend><span class="number">Enter Review Details</span></legend>
-          <label>Song Title:</label>
-          <input type="text" [(ngModel)]="Song_Title" name="Song_Title" formControlName="Song_Title" id="review-add-songtitle" placeholder="Song Title">
-          <div class="required-error" *ngIf = "form.get('Song_Title').touched && form.get('Song_Title').invalid">
-              <p *ngIf = "form.get('Song_Title').errors.required">Song Title is Required</p>
-          </div>
-          
-          <label>Artist:</label>
-          <input type="text" [(ngModel)]="Artist" name="Artist" formControlName="Artist" id="review-add-artist" placeholder="Artist">
-          <div class="required-error" *ngIf = "form.get('Artist').touched && form.get('Artist').invalid">
-              <p *ngIf = "form.get('Artist').errors.required">Artist is Required</p>
-          </div>
 
           <label>Review Comment:</label>
           <input type="text" [(ngModel)]="Review_Comment" name="Review_Comment" formControlName="Review_Comment" id="review-add-Review_Comment" placeholder="Review Comment">
@@ -33,3 +39,4 @@
         <button  (click)="add_review()" [disabled]="!form.valid">Add Review</button>
       </form>
   </div>
+</ng-template>

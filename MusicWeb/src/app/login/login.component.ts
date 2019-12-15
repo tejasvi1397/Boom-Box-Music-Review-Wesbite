@@ -41,8 +41,11 @@ export class LoginComponent implements OnInit {
         this._router.navigate(['/admin'])
       }
     },
-    err => console.log(err)
-    )
+    err => {
+      console.log(err);
+      window.location.reload();
+      alert(err.error);
+    })
   }
 
   //for form validation
