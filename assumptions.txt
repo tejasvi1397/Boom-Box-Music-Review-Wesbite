@@ -1,0 +1,25 @@
+The following assumptions have been made for this project in accordance to the requirements and test of the project - 
+    Functionalities for limited user(unauthenticated)-
+    1. Search songs using keywords and see their respective reviews
+    2. See list of trending songs which are ordered by their average rating in descending order and see respective reviews for songs
+
+    Functionalities for authenticated user-
+    1. All functionalities of limited user.
+    2. Add Songs and also add review while adding song if necessary
+    3. Update Songs
+    4. Add Reviews for a song
+    5. View list of all songs and their reviews
+    6. Create a playlist.(Title and description)
+    7. Search songs while creating a playlist and add them to that playlist
+    8. View their own playlists as well as any public playlists
+    9. Edit title and description of their own playlist.
+    10. Add songs to their own playlists.
+    11. Remove songs from their own playlists.
+
+    Functionalities for site manager(admin)-
+    1. All functionalities of authenticated user.
+    2. Delete a song
+    3. Modify Users- Change their account status (Activated/Deactivated) or their role (regular user/admin)
+    4. Modify Song Status- Change status of song (hidden/visible)
+    5. View all playlists (both public and private)
+    6. Delete playlists.
