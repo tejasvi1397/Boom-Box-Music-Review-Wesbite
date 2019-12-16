@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   Email: string;
   Password: string;
   check_flag: number;
+  login_user_data_resend: Object;
 
   constructor(private _http: HttpService, private _router: Router) { }
 
@@ -51,6 +52,27 @@ export class LoginComponent implements OnInit {
       console.log(err);
       window.location.reload();
       alert(err.error);
+    })
+  }
+
+  resend_email(){
+    this.check_flag = 2;
+    let user_details = {
+      Email: this.Email,
+      Password: this.Password
+    };
+    this._http.post_login_user(JSON.stringify(user_details)).subscribe(data =>{
+      this.login_user_data_resend = data;
+      console.log(this.login_user_data_resend);
+      let resend_details = {
+        Email: this.login_user_data_resend['email'],
+        _id: this.login_user_data_resend['id']
+      }
+      this._http.post_resend_verify_email(JSON.stringify(resend_details)).subscribe(data => {
+        alert('Verification Email Resent');
+        console.log('Verification Email Resent');
+        console.log(data);
+      })
     })
   }
 

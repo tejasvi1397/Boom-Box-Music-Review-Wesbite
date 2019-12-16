@@ -125,7 +125,31 @@ exports.user_verify_email = async(req, res) => {
 
 //logic to resend email
 exports.user_resend_email = async(req, res) => {
-    console.log(req.body);
+    rand=Math.floor((Math.random() * 100) + 54);
+    host=req.get('host');
+    link="http://localhost:8080/api/secure/verify?user="+req.body._id+"&id="+rand;
+    mailOptions={
+
+        from: 'Do Not Reply <boxboom758_do_not_reply@gmail.com>',
+            
+        to : req.body.Email,
+            
+        subject : "Please confirm your Email to access Boom-Box",
+            
+        html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
+    }
+    console.log(mailOptions);
+    transporter.sendMail(mailOptions, function(err, res){
+        if (err){
+        console.log(err);
+        res.status(400).send(error);
+        }
+        else{
+        console.log("Email Sent");
+        console.log(req.body._id);
+        res.json({user: req.body._id});
+        }
+    })
 }
 
 //logic for when user login and if valid then generate a JWT token.
@@ -160,7 +184,7 @@ exports.user_login = async(req, res, next) => {
                             console.log(`Login Successful ${element}`);
                             let payload = {username: element['Email'] , id: element['_id'], status: element['Account_Status']}; //make payload
                             let token = jwt.sign(payload, secret); //make token
-                            res.json({token: token, role: element['Role'], account_status: element['Account_Status'], is_verified: element['IsVerified']}); //send token
+                            res.json({token: token, role: element['Role'], account_status: element['Account_Status'], is_verified: element['IsVerified'], email: element['Email'], id: element['_id']}); //send token
                             // res.status(200).send({token});
                             console.log('token: ' + token);
                         }

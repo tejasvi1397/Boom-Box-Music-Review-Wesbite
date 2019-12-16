@@ -18,5 +18,5 @@ user_router.get('/admin/users', user_controller.jwt_verify, user_controller.user
 user_router.get('/secure/verify', user_controller.user_verify_email);
 
 //route to resend email
-user_router.get('/secure/resend',user_controller.user_resend_email);
+user_router.post('/secure/resend',user_controller.user_resend_email);
 module.exports = user_router;

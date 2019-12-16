@@ -28,7 +28,13 @@
   <div class="not-verify-message">
     <p>Verifiation Email has been sent to your email address. Please verify your account</p>
     <p>Click below to resend verification email</p>
-    <button>Resend Email</button>
+    <button (click) = "resend_email()">Resend Email</button>
   </div>
 </ng-template>
+
+<ng-template [ngIf] = "check_flag == 2">
+    <div class="email-resent">
+      <p>Verification Email Resent. Please verify your account</p>
+    </div>
+  </ng-template>
 

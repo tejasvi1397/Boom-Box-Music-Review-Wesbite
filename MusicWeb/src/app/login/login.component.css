@@ -111,7 +111,7 @@ input[type="password"]
     text-decoration: none;
     color: white;
   }
-  .not-verify-message{
+  .not-verify-message, .email-resent{
     /* color: white; */
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -133,4 +133,7 @@ input[type="password"]
     display: inline-block;
     margin: auto;
     width: 20%;
+  }
+  .email-resent{
+    height: 75px;
   }

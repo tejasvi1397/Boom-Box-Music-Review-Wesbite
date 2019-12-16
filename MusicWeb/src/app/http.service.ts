@@ -167,4 +167,12 @@ export class HttpService {
     return this.http.delete(`${this.base_url_playlists_admin}/delete/${id}`);
   }
 
+  post_resend_verify_email(resend_details): Observable<object>{
+    return this.http.post(`${this.base_url_users_secure}/resend`, resend_details, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
 }
