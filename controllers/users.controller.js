@@ -11,6 +11,17 @@ if (typeof secret === 'undefined') {
 	process.exit(1);
 }
 
+var nodemailer = require("nodemailer");
+var transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: "boxboom758@gmail.com",
+        pass: "boombox_project"
+    }
+});
+
+var rand,mailOptions,host,link;
+
 //logic to create a new user.
 exports.user_create = async(req, res, next) => {
     try{
@@ -48,24 +59,73 @@ exports.user_create = async(req, res, next) => {
                     if (err) {
                         return next(err);
                         }
-                    res.send(user);
+                    // res.send(user);
                     console.log('User Created');
+                    //for sending email verification
+                    rand=Math.floor((Math.random() * 100) + 54);
+                    host=req.get('host');
+                    link="http://localhost:8080/api/secure/verify?user="+user._id+"&id="+rand;
+                    mailOptions={
+
+                        from: 'Do Not Reply <boxboom758_do_not_reply@gmail.com>',
+            
+                        to : req.body.Email,
+            
+                        subject : "Please confirm your Email to access Boom-Box",
+            
+                        html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
+                    }
+                    console.log(mailOptions);
+                    transporter.sendMail(mailOptions, function(err, res){
+                        if (err){
+                            console.log(err);
+                            res.status(400).send(error);
+                        }
+                        else{
+                            console.log("Email Sent");
+                            console.log(user._id);
+                            res.json({user: user._id});
+                        }
+                    })
                 })
             });
         });
     }
     })
-        
-    // else{
-    //     res.status(400).send(`Username ${req.body.Email} already exists`);
-    //     console.log(`Username ${req.body.Email} already exists`);
-    // }
 }
 catch (err) {
     res.send({
       error: `${err.message}`,
     });
   }
+}
+
+//logic for email verify route
+exports.user_verify_email = async(req, res) => {
+    if((req.protocol+"://"+req.get('host'))==("http://"+host)){
+        console.log("User clicked on link. Info authentic");
+        console.log(req.query.id);
+        console.log(req.query.user);
+        if(req.query.id==rand){
+            console.log("Email Verified");
+            const create =  await user_model.findOneAndUpdate({_id : req.query.user },{$set: {IsVerified: true}});
+            // res.set('location', 'http://localhost:4200/login');
+            res.status(301).send('Email Verified! You can now Login');
+            // res.send("Email verified, you can login now..")
+        }
+        else{
+            console.log("Email not verified");
+            res.status(400).send('Email is not verified');
+        }
+    }
+    else{
+        res.status(400).send('Request is from unknown source');
+    }
+}
+
+//logic to resend email
+exports.user_resend_email = async(req, res) => {
+    console.log(req.body);
 }
 
 //logic for when user login and if valid then generate a JWT token.
@@ -100,7 +160,7 @@ exports.user_login = async(req, res, next) => {
                             console.log(`Login Successful ${element}`);
                             let payload = {username: element['Email'] , id: element['_id'], status: element['Account_Status']}; //make payload
                             let token = jwt.sign(payload, secret); //make token
-                            res.json({token: token, role: element['Role'], account_status: element['Account_Status']}); //send token
+                            res.json({token: token, role: element['Role'], account_status: element['Account_Status'], is_verified: element['IsVerified']}); //send token
                             // res.status(200).send({token});
                             console.log('token: ' + token);
                         }

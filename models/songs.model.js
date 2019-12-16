@@ -6,7 +6,7 @@ let SongSchema = new Schema({
     Song_Title: {type: String, required: true, max: 30},
     Artist: {type: String, required: true,  max: 30},
     Album: {type: String,  max: 30},
-    Year: {type: Number},
+    Year: {type: String},
     Comment: {type: String,  max: 30},
     Genre: {type: String},
     Submitted_On: {type: Date, default: Date.now},

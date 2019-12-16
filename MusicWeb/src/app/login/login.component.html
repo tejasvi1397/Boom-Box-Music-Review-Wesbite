@@ -4,7 +4,7 @@
         <h1>Login</h1>
         
         <fieldset>
-          <legend><span class="number">Enter Login Details</span></legend>
+          <legend><span class="login-number">Enter Login Details</span></legend>
           <label>Email (Username):</label>
           <input type="email" [(ngModel)]="Email" name="Email" formControlName="Email" id="login_email" placeholder="Email">
           <div class="required-error" *ngIf = "form.get('Email').touched && form.get('Email').invalid">
@@ -22,4 +22,13 @@
         <button (click)="login()" [disabled]="!form.valid">Login</button>
         <p class="create-new-account"><a href="#" routerLink="/signup">Click here to Create a New Account</a></p>
       </form>
+</div>
+
+<ng-template [ngIf] = "check_flag == 1">
+  <div class="not-verify-message">
+    <p>Verifiation Email has been sent to your email address. Please verify your account</p>
+    <p>Click below to resend verification email</p>
+    <button>Resend Email</button>
   </div>
+</ng-template>
+

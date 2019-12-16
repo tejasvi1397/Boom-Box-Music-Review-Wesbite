@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   login_user_data: Object;
   Email: string;
   Password: string;
+  check_flag: number;
 
   constructor(private _http: HttpService, private _router: Router) { }
 
@@ -34,11 +35,16 @@ export class LoginComponent implements OnInit {
         this._http.logoutUser();
         // this._router.navigate(['/']);
       }
-      else if(this.login_user_data['role'] == "Regular User"){
+      else if(this.login_user_data['is_verified'] == false){
+        // alert("Verifiation Email has been sent to your email address. Please verify your account");
+        this._http.logoutUser();
+        this.check_flag = 1;
+      }
+      else if(this.login_user_data['role'] == "Regular User" && this.login_user_data['is_verified'] == true){
         this._router.navigate(['/login_success'])
       }
-      else{
-        this._router.navigate(['/admin'])
+      else if(this.login_user_data['role'] == "Admin" && this.login_user_data['is_verified'] == true){
+        this._router.navigate(['/admin'] )
       }
     },
     err => {
