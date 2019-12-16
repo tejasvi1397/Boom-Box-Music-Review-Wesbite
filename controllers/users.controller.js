@@ -73,7 +73,7 @@ exports.user_create = async(req, res, next) => {
             
                         subject : "Please confirm your Email to access Boom-Box",
             
-                        html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
+                        html : "Greetings from Boom-Box,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
                     }
                     console.log(mailOptions);
                     transporter.sendMail(mailOptions, function(err, res){
